@@ -11,17 +11,37 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../data/api/api_manager.dart' as _i3;
+import '../../data/contracts/auth/auth_offline_datasource.dart' as _i8;
+import '../../data/contracts/auth/auth_online_datasource.dart' as _i4;
+import '../../data/datassource/auth/auth_offline-datasource_impl.dart' as _i9;
+import '../../data/datassource/auth/auth_online_datasource_impl.dart' as _i5;
+import '../../data/repository/auth_repo_impl.dart' as _i7;
+import '../../domin/repository/auth_repo.dart' as _i6;
+import '../../domin/usecase/sign_up_usecase.dart' as _i10;
+
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
   }) {
-    _i2.GetItHelper(
+    final gh = _i2.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
+    gh.lazySingleton<_i3.ApiManager>(() => _i3.ApiManager());
+    gh.factory<_i4.AuthOnlineDatasource>(
+        () => _i5.AuthOnlineDatasourceImpl(gh<_i3.ApiManager>()));
+    gh.factory<_i6.AuthRepository>(() => _i7.AuthRepoImpl(
+          gh<_i4.AuthOnlineDatasource>(),
+          gh<_i4.AuthOnlineDatasource>(),
+        ));
+    gh.factory<_i8.AuthOfflineDatasource>(
+        () => _i9.AuthOfflineDatasourceImpl());
+    gh.factory<_i10.RegisterUseCase>(
+        () => _i10.RegisterUseCase(gh<_i6.AuthRepository>()));
     return this;
   }
 }
