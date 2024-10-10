@@ -19,6 +19,7 @@ import '../../data/datassource/auth/auth_online_datasource_impl.dart' as _i5;
 import '../../data/repository/auth_repo_impl.dart' as _i7;
 import '../../domin/repository/auth_repo.dart' as _i6;
 import '../../domin/usecase/sign_up_usecase.dart' as _i10;
+import '../../presentation/signup/sign_up_viewmodel.dart' as _i11;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -40,8 +41,10 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i8.AuthOfflineDatasource>(
         () => _i9.AuthOfflineDatasourceImpl());
-    gh.factory<_i10.RegisterUseCase>(
-        () => _i10.RegisterUseCase(gh<_i6.AuthRepository>()));
+    gh.factory<_i10.SignupUseCase>(
+        () => _i10.SignupUseCase(gh<_i6.AuthRepository>()));
+    gh.factory<_i11.SignUpViewModel>(
+        () => _i11.SignUpViewModel(gh<_i10.SignupUseCase>()));
     return this;
   }
 }

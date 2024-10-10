@@ -4,9 +4,9 @@ import 'package:online_exam/domin/model/user.dart';
 import 'package:online_exam/domin/repository/auth_repo.dart';
 
 @injectable
-class RegisterUseCase {
+class SignupUseCase {
   AuthRepository authRepository;
-  RegisterUseCase(this.authRepository);
+  SignupUseCase(this.authRepository);
 
   Future<Result<User?>> invoke(
     String username,
