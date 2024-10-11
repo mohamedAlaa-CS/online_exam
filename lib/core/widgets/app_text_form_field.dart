@@ -4,29 +4,30 @@ import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
 class AppTextFormField extends StatelessWidget {
-  const AppTextFormField({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.controller,
-    this.validator,
-  });
+  const AppTextFormField(
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      this.controller,
+      this.validator,
+      this.isObscureText});
   final String labelText;
   final String hintText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final bool? isObscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24.h),
       child: TextFormField(
         controller: controller,
+        obscureText: isObscureText ?? false,
         validator: validator,
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
           hintStyle: TextStyles.font14PlaceHolder400Weight,
-          labelStyle: TextStyles.font16Gray400Weight,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
             borderSide: const BorderSide(

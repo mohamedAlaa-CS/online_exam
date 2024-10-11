@@ -5,7 +5,7 @@ import 'package:online_exam/data/api/model/request/signup_request_body.dart';
 import 'package:online_exam/data/api/model/user_dto.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
-import 'package:online_exam/domin/model/user.dart';
+import 'package:online_exam/domin/entities/user.dart';
 
 @Injectable(as: AuthOnlineDatasource)
 class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {

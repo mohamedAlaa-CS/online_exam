@@ -1,5 +1,5 @@
 import 'package:online_exam/domin/common/api_result.dart';
-import 'package:online_exam/domin/model/user.dart';
+import 'package:online_exam/domin/entities/user.dart';
 
 abstract class AuthOnlineDatasource {
   Future<Result<User?>> signup(

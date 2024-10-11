@@ -1,4 +1,4 @@
-import 'package:online_exam/domin/model/user.dart';
+import 'package:online_exam/domin/entities/user.dart';
 
 class UserDto {
   UserDto({

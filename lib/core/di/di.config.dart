@@ -17,8 +17,8 @@ import '../../data/contracts/auth/auth_online_datasource.dart' as _i4;
 import '../../data/datassource/auth/auth_offline-datasource_impl.dart' as _i9;
 import '../../data/datassource/auth/auth_online_datasource_impl.dart' as _i5;
 import '../../data/repository/auth_repo_impl.dart' as _i7;
-import '../../domin/repository/auth_repo.dart' as _i6;
-import '../../domin/usecase/sign_up_usecase.dart' as _i10;
+import '../../domin/repositories/auth_repository.dart' as _i6;
+import '../../domin/use_case/sign_up_use_case.dart' as _i10;
 import '../../presentation/signup/sign_up_viewmodel.dart' as _i11;
 
 extension GetItInjectableX on _i1.GetIt {

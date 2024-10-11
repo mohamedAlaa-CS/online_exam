@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/helper/spacing.dart';
+import 'package:online_exam/core/theming/styles.dart';
 
 class AppDialogs {
-  void showSuccessDialog(BuildContext context) {
+  static void showSuccessDialog(BuildContext context) {
+    context.pop();
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -22,7 +26,10 @@ class AppDialogs {
                 backgroundColor: Colors.blue,
                 disabledForegroundColor: Colors.grey,
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.pop();
+                //todo : navigate to login view
+              },
               child: const Text('Continue'),
             ),
           ],
@@ -31,8 +38,8 @@ class AppDialogs {
     );
   }
 
-  void showErrorDialog(BuildContext context, String error) {
-    //context.pop();
+  static void showErrorDialog(BuildContext context, String error) {
+    context.pop();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -42,18 +49,41 @@ class AppDialogs {
           size: 32,
         ),
         content: Text(
+          textAlign: TextAlign.center,
           error,
+          style: TextStyles.font20Black500Weight.copyWith(fontSize: 16.sp),
         ),
         actions: [
           TextButton(
             onPressed: () {
               context.pop();
             },
-            child: const Text(
+            child: Text(
               'Got it',
+              style: TextStyles.font16Gray400Weight,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  static void showLoadingDialog(BuildContext context) {
+    //context.pop();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Row(
+          children: [
+            const CircularProgressIndicator(),
+            horizontalSpace(16),
+            Text(
+              textAlign: TextAlign.center,
+              'Loading ...',
+              style: TextStyles.font20Black500Weight.copyWith(fontSize: 16.sp),
+            ),
+          ],
+        ),
       ),
     );
   }

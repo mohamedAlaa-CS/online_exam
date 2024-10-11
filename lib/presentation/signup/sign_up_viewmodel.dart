@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/helper/app_regex.dart';
 import 'package:online_exam/domin/common/api_result.dart';
-import 'package:online_exam/domin/model/user.dart';
-import 'package:online_exam/domin/usecase/sign_up_usecase.dart';
+import 'package:online_exam/domin/entities/user.dart';
+import 'package:online_exam/domin/use_case/sign_up_use_case.dart';
 import 'package:online_exam/presentation/signup/signup_states.dart';
 
 @injectable
@@ -10,18 +12,26 @@ class SignUpViewModel extends Cubit<SignupViewState> {
   SignupUseCase signupUsecase;
   SignUpViewModel(this.signupUsecase) : super(InitialState());
 
-  void signup(
-    SignupIntent intent,
-  ) async {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  void signup() async {
     emit(SignupLoadingState());
     var result = await signupUsecase.invoke(
-      intent.username,
-      intent.firstName,
-      intent.lastName,
-      intent.email,
-      intent.password,
-      intent.rePassword,
-      intent.phone,
+      nameController.text.trim(),
+      firstNameController.text.trim(),
+      lastNameController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim(),
+      confirmPasswordController.text.trim(),
+      phoneController.text.trim(),
     );
     switch (result) {
       case Success<User?>():
@@ -34,25 +44,15 @@ class SignUpViewModel extends Cubit<SignupViewState> {
         }
     }
   }
-}
 
-sealed class SignUpViewIntent {}
-
-class SignupIntent extends SignUpViewIntent {
-  String username;
-  String firstName;
-  String lastName;
-  String email;
-  String password;
-  String rePassword;
-  String phone;
-  SignupIntent({
-    required this.username,
-    required this.firstName,
-    required this.lastName,
-    required this.email,
-    required this.password,
-    required this.rePassword,
-    required this.phone,
-  });
+  String? validateConfirmPassword(BuildContext context) {
+    if (confirmPasswordController.text.trim().isEmpty ||
+        !AppRegExp.isPasswordValid(confirmPasswordController.text.trim())) {
+      return '🔴Confirm Password is required!';
+    } else if (passwordController.text.trim() !=
+        confirmPasswordController.text.trim()) {
+      return '🔴Password and Confirm Password must be same!';
+    }
+    return null;
+  }
 }
