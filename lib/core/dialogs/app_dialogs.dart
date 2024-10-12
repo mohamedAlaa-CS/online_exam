@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
+import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
 class AppDialogs {
@@ -23,7 +24,7 @@ class AppDialogs {
             TextButton(
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue,
+                backgroundColor: AppColors.primary,
                 disabledForegroundColor: Colors.grey,
               ),
               onPressed: () {
@@ -75,7 +76,9 @@ class AppDialogs {
       builder: (context) => AlertDialog(
         content: Row(
           children: [
-            const CircularProgressIndicator(),
+            const CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
             horizontalSpace(16),
             Text(
               textAlign: TextAlign.center,
