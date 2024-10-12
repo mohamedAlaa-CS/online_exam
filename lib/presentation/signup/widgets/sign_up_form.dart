@@ -5,8 +5,15 @@ import 'package:online_exam/core/helper/validations.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
 import 'package:online_exam/presentation/signup/sign_up_viewmodel.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
+
+  @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  bool isObscureText = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -58,6 +65,17 @@ class SignUpForm extends StatelessWidget {
                       context.read<SignUpViewModel>().passwordController,
                   labelText: 'Password',
                   hintText: 'Enter password',
+                  isObscureText: isObscureText,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isObscureText = !isObscureText;
+                      });
+                    },
+                    child: Icon(
+                      isObscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
                   validator: (value) =>
                       Validations.validatePassword(context, value),
                 ),
@@ -69,9 +87,22 @@ class SignUpForm extends StatelessWidget {
                       context.read<SignUpViewModel>().confirmPasswordController,
                   labelText: 'Confirm password',
                   hintText: 'Confirm password',
-                  validator: (value) => context
-                      .read<SignUpViewModel>()
-                      .validateConfirmPassword(context),
+                  isObscureText: isObscureText,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isObscureText = !isObscureText;
+                      });
+                    },
+                    child: Icon(
+                      isObscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
+                  validator: (value) => Validations.validateConfirmPassword(
+                    context,
+                    context.read<SignUpViewModel>().passwordController.text,
+                    value,
+                  ),
                 ),
               ),
             ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam/core/helper/app_regex.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/entities/user.dart';
 import 'package:online_exam/domin/use_case/sign_up_use_case.dart';
@@ -43,16 +42,5 @@ class SignUpViewModel extends Cubit<SignupViewState> {
           emit(SignupErrorState(result.exception));
         }
     }
-  }
-
-  String? validateConfirmPassword(BuildContext context) {
-    if (confirmPasswordController.text.trim().isEmpty ||
-        !AppRegExp.isPasswordValid(confirmPasswordController.text.trim())) {
-      return '🔴Confirm Password is required!';
-    } else if (passwordController.text.trim() !=
-        confirmPasswordController.text.trim()) {
-      return '🔴Password and Confirm Password must be same!';
-    }
-    return null;
   }
 }
