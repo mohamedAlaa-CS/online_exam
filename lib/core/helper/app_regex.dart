@@ -8,7 +8,7 @@ class AppRegExp {
   }
 
   static bool isPhoneNumberValid(String phoneNumber) {
-    return RegExp(r"^(?:[+0]9)?[0-9]{10}$").hasMatch(phoneNumber);
+    return RegExp(r"^(?:\+20|0)?1[0125]\d{8}$").hasMatch(phoneNumber);
   }
 
   static bool isOTPValid(String otp) {

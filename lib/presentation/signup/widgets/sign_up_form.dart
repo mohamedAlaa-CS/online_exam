@@ -80,8 +80,8 @@ class SignUpForm extends StatelessWidget {
             controller: context.read<SignUpViewModel>().phoneController,
             labelText: 'Phone number',
             hintText: 'Enter phone number',
-            //  validator: (value) =>
-            //     Validations.validatePhoneNumber(context, value),
+            validator: (value) =>
+                Validations.validatePhoneNumber(context, value),
           ),
         ],
       ),
