@@ -24,11 +24,9 @@ class AppRegExp {
   }
 
   static bool isPasswordValid(String password) {
-    return hasLowerCase(password) &&
-        hasUpperCase(password) &&
-        hasNumber(password) &&
-        hasSpecialCharacters(password) &&
-        hasMinLength(password);
+    return RegExp(
+            r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+        .hasMatch(password);
   }
 
   static bool hasLowerCase(String password) {
