@@ -1,6 +1,6 @@
 class AppRegExp {
   static bool isNameValid(String name) {
-    return RegExp(r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$").hasMatch(name);
+    return RegExp(r"^[A-Za-z]{2,}$").hasMatch(name);
   }
 
   static bool isEmailValid(String email) {

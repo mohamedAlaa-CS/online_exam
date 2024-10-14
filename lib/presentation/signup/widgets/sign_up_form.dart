@@ -24,7 +24,7 @@ class _SignUpFormState extends State<SignUpForm> {
             controller: context.read<SignUpViewModel>().nameController,
             labelText: 'User name',
             hintText: 'Enter you user name',
-            validator: (value) => Validations.validateName(context, value),
+            validator: Validations.validateName,
           ),
           Row(
             children: [
@@ -34,8 +34,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       context.read<SignUpViewModel>().firstNameController,
                   labelText: 'First name',
                   hintText: 'Enter you first name',
-                  validator: (value) =>
-                      Validations.validateName(context, value),
+                  validator: Validations.validateName,
                 ),
               ),
               horizontalSpace(17),
@@ -45,8 +44,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       context.read<SignUpViewModel>().lastNameController,
                   labelText: 'Last name',
                   hintText: 'Enter you last name',
-                  validator: (value) =>
-                      Validations.validateName(context, value),
+                  validator: Validations.validateName,
                 ),
               ),
             ],
@@ -55,7 +53,7 @@ class _SignUpFormState extends State<SignUpForm> {
             controller: context.read<SignUpViewModel>().emailController,
             labelText: 'Email',
             hintText: 'Enter you email',
-            validator: (value) => Validations.validateEmail(context, value),
+            validator: Validations.validateEmail,
           ),
           Row(
             children: [
@@ -76,8 +74,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       isObscureText ? Icons.visibility_off : Icons.visibility,
                     ),
                   ),
-                  validator: (value) =>
-                      Validations.validatePassword(context, value),
+                  validator: Validations.validatePassword,
                 ),
               ),
               horizontalSpace(17),
@@ -99,7 +96,6 @@ class _SignUpFormState extends State<SignUpForm> {
                     ),
                   ),
                   validator: (value) => Validations.validateConfirmPassword(
-                    context,
                     context.read<SignUpViewModel>().passwordController.text,
                     value,
                   ),
@@ -111,8 +107,7 @@ class _SignUpFormState extends State<SignUpForm> {
             controller: context.read<SignUpViewModel>().phoneController,
             labelText: 'Phone number',
             hintText: 'Enter phone number',
-            validator: (value) =>
-                Validations.validatePhoneNumber(context, value),
+            validator: Validations.validatePhoneNumber,
           ),
         ],
       ),
