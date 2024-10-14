@@ -18,7 +18,7 @@ class OnlineExam extends StatelessWidget {
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.light,
         onGenerateRoute: AppRouters.onGeneratorRoute,
-        initialRoute: Routers.signupView,
+        initialRoute: Routers.loginView,
         home: child,
       ),
     );

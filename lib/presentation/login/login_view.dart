@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/validations.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
 
 class LoginView extends StatelessWidget {
@@ -24,6 +26,7 @@ class LoginView extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
+                  context.pushName(Routers.forgetPassword);
                   if (key.currentState!.validate()) {
                     print(' valied');
                   }
