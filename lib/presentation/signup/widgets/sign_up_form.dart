@@ -13,7 +13,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  bool isObscureText = false;
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return Form(
