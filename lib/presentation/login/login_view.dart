@@ -20,7 +20,7 @@ class LoginView extends StatelessWidget {
             AppTextFormField(
               labelText: 'Email',
               hintText: 'Enter you email',
-              validator: (value) => Validations.validateEmail(context, value),
+              validator: (value) => Validations.validateEmail(value),
             ),
             ElevatedButton(
                 onPressed: () {

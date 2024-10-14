@@ -1,66 +1,77 @@
-import 'package:flutter/material.dart';
 import 'package:online_exam/core/helper/app_regex.dart';
 
 abstract class Validations {
-  static String? validateName(BuildContext context, String? name) {
-    if (name!.isEmpty || !AppRegExp.isNameValid(name)) {
+  static String? validateName(String? name) {
+    if (name!.isEmpty) {
       return '🔴Name is required!';
+    } else if (!AppRegExp.isNameValid(name)) {
+      return 'This Name is not valid';
     }
     return null;
   }
 
-  static String? validateEmail(BuildContext context, String? email) {
-    if (email!.isEmpty || !AppRegExp.isEmailValid(email)) {
+  static String? validateEmail(String? email) {
+    if (email!.isEmpty) {
       return '🔴Email is required!';
-    } else if (!email.contains('@')) {
-      return '🔴Invalid Email!';
+    } else if (!AppRegExp.isEmailValid(email)) {
+      return 'This Email is not valid';
     }
     return null;
   }
 
-  static String? validatePhoneNumber(
-      BuildContext context, String? phoneNumber) {
-    if (phoneNumber!.isEmpty || !AppRegExp.isPhoneNumberValid(phoneNumber)) {
+  static String? validatePhoneNumber(String? phoneNumber) {
+    if (phoneNumber!.isEmpty) {
       return '🔴Phone number is required!';
+    } else if (!AppRegExp.isPhoneNumberValid(phoneNumber)) {
+      return 'This Phone number is not valid';
     }
     return null;
   }
 
-  static String? validatePassword(BuildContext context, String? password) {
-    if (password!.isEmpty || !AppRegExp.isPasswordValid(password)) {
+  static String? validatePassword(String? password) {
+    if (password!.isEmpty) {
       return '🔴Password is required!';
+    } else if (!AppRegExp.isPasswordValid(password)) {
+      return 'This Password is not valid';
     }
     return null;
   }
 
   static String? validateConfirmPassword(
-      BuildContext context, String? password, String? confirmPassword) {
-    if (confirmPassword!.isEmpty ||
-        !AppRegExp.isPasswordValid(confirmPassword)) {
+      String? password, String? confirmPassword) {
+    if (confirmPassword!.isEmpty) {
       return '🔴Confirm Password is required!';
+    } else if (!AppRegExp.isPasswordValid(confirmPassword)) {
+      return 'This Confirm Password is not valid';
     } else if (password != confirmPassword) {
       return '🔴Password and Confirm Password must be same!';
     }
     return null;
   }
 
-  static String? validateOTP(BuildContext context, String? otp) {
-    if (otp!.isEmpty || !AppRegExp.isOTPValid(otp)) {
+  static String? validateOTP(String? otp) {
+    if (otp!.isEmpty) {
       return '🔴OTP is required!';
+    } else if (!AppRegExp.isOTPValid(otp)) {
+      return 'This OTP is not valid';
     }
     return null;
   }
 
-  static String? validateNationalID(BuildContext context, String? nationalID) {
-    if (nationalID!.isEmpty || !AppRegExp.isNationalIDValid(nationalID)) {
+  static String? validateNationalID(String? nationalID) {
+    if (nationalID!.isEmpty) {
       return '🔴National ID is required!';
+    } else if (!AppRegExp.isNationalIDValid(nationalID)) {
+      return 'This National ID is not valid';
     }
     return null;
   }
 
-  static String? validateCardCCV(BuildContext context, String? ccv) {
-    if (ccv!.isEmpty || !AppRegExp.isCardCVVValid(ccv)) {
+  static String? validateCardCCV(String? ccv) {
+    if (ccv!.isEmpty) {
       return '🔴CCV is required!';
+    } else if (!AppRegExp.isCardCVVValid(ccv)) {
+      return 'This CCV is not valid';
     }
     return null;
   }
