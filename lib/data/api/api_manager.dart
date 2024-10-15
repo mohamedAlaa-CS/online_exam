@@ -36,4 +36,10 @@ class ApiManager {
         await _dio.post(ApiConstants.forgetPasswordApi, data: {"email": email});
     return response.data['message'];
   }
+
+  Future<void> resetCode(String resetCode) async {
+    var response = await _dio
+        .post(ApiConstants.resetCodeApi, data: {"resetCode": resetCode});
+    return response.data['message'];
+  }
 }

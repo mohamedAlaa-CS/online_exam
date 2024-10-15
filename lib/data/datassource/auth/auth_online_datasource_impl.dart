@@ -48,4 +48,14 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
       },
     );
   }
+
+  @override
+  Future<Result<void>> resetCode(String resetCode) {
+    return executeApi<void>(
+      () async {
+        var response = await apiManager.resetCode(resetCode);
+        return response;
+      },
+    );
+  }
 }
