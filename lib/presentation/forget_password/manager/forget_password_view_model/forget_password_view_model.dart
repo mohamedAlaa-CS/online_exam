@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/domin/common/api_result.dart';
-import 'package:online_exam/domin/use_case/forget_password_use_case.dart';
+import 'package:online_exam/domin/use_case/auth_use_case/forget_password_use_case.dart';
 
 import 'forget_password_states.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/entities/user.dart';
-import 'package:online_exam/domin/use_case/sign_up_use_case.dart';
+import 'package:online_exam/domin/use_case/auth_use_case/sign_up_use_case.dart';
 import 'package:online_exam/presentation/signup/signup_states.dart';
 
 @injectable

@@ -18,8 +18,9 @@ import '../../data/datassource/auth/auth_offline-datasource_impl.dart' as _i7;
 import '../../data/datassource/auth/auth_online_datasource_impl.dart' as _i5;
 import '../../data/repository/auth_repo_impl.dart' as _i9;
 import '../../domin/repositories/auth_repository.dart' as _i8;
-import '../../domin/use_case/forget_password_use_case.dart' as _i10;
-import '../../domin/use_case/sign_up_use_case.dart' as _i11;
+import '../../domin/use_case/auth_use_case/forget_password_use_case.dart'
+    as _i10;
+import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i11;
 import '../../presentation/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i13;
 import '../../presentation/signup/sign_up_viewmodel.dart' as _i12;
