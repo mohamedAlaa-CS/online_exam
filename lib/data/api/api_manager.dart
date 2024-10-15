@@ -30,4 +30,10 @@ class ApiManager {
     var authResponse = AuthResponse.fromJson(response.data);
     return authResponse;
   }
+
+  Future<String?> forgetPassword(String email) async {
+    var response =
+        await _dio.post(ApiConstants.forgetPasswordApi, data: {"email": email});
+    return response.data['message'];
+  }
 }

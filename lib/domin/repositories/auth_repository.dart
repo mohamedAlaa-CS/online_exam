@@ -11,4 +11,5 @@ abstract class AuthRepository {
     String rePassword,
     String phone,
   );
+  Future<Result<String?>> forgetPassword(String email);
 }

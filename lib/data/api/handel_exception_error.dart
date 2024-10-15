@@ -39,14 +39,9 @@ String handellerErrorMessage(Exception? exception) {
 }
 
 String serverFailure(int statusCode, dynamic response) {
-  if (statusCode == 404) {
-    return 'Your request was not found, please try later';
-  } else if (statusCode == 500) {
+  if (statusCode == 500) {
     return 'There is a problem with server, please try later';
-  } else if (statusCode == 400 ||
-      statusCode == 401 ||
-      statusCode == 403 ||
-      statusCode == 409) {
+  } else if (statusCode != 200 || statusCode != 201) {
     return response['message'];
   } else {
     return 'There was an error , please try again';
