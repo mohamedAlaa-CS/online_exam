@@ -40,6 +40,8 @@ dependencies:
   get_it:
   dio: 
   flutter_bloc: 
+ #Pin code input (OTP) text field
+  pinput: ^5.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

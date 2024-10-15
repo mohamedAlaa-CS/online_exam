@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
@@ -34,7 +36,10 @@ class ForgetPasswordView extends StatelessWidget {
                 AppButton(
                   isExpanded: true,
                   text: 'Submit',
-                  onPressed: () {},
+                  onPressed: () {
+                    //todo : call forget password api here & nav to verify otp
+                    context.pushName(Routers.verificationCodeView);
+                  },
                 ),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/di/di.dart';
 import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/presentation/forget_password/views/forget_password_view.dart';
+import 'package:online_exam/presentation/forget_password/views/verification_code_view.dart';
 import 'package:online_exam/presentation/login/login_view.dart';
 import 'package:online_exam/presentation/signup/sign_up_view.dart';
 import 'package:online_exam/presentation/signup/sign_up_viewmodel.dart';
@@ -24,6 +25,10 @@ class AppRouters {
       case Routers.forgetPassword:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordView(),
+        );
+      case Routers.verificationCodeView:
+        return MaterialPageRoute(
+          builder: (context) => VerificationCodeView(),
         );
 
       default:
