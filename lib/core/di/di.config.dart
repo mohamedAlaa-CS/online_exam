@@ -20,9 +20,12 @@ import '../../data/repository/auth_repo_impl.dart' as _i9;
 import '../../domin/repositories/auth_repository.dart' as _i8;
 import '../../domin/use_case/auth_use_case/forget_password_use_case.dart'
     as _i10;
+import '../../domin/use_case/auth_use_case/reset_code_use_case.dart' as _i14;
 import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i11;
 import '../../presentation/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i13;
+import '../../presentation/forget_password/manager/rest_code_view_model/rest_code_view_model.dart'
+    as _i15;
 import '../../presentation/signup/sign_up_viewmodel.dart' as _i12;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -53,6 +56,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i12.SignUpViewModel(gh<_i11.SignupUseCase>()));
     gh.factory<_i13.ForgetPasswordViewModel>(
         () => _i13.ForgetPasswordViewModel(gh<_i10.ForgetPasswordUseCase>()));
+    gh.factory<_i14.ResetCodeUseCase>(
+        () => _i14.ResetCodeUseCase(authRepository: gh<_i8.AuthRepository>()));
+    gh.factory<_i15.ResetCodeViewModel>(
+        () => _i15.ResetCodeViewModel(gh<_i14.ResetCodeUseCase>()));
     return this;
   }
 }
