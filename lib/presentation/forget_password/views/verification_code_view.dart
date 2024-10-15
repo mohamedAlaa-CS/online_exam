@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
@@ -49,7 +51,10 @@ class VerificationCodeView extends StatelessWidget {
                     border: Border.all(color: AppColors.error),
                   ),
                   length: 6,
-                  onCompleted: (pin) => print(pin),
+                  onCompleted: (pin) {
+                    // todo : call verify otp api here & nav to reset password
+                    context.pushName(Routers.resetPasswordView);
+                  },
                 ),
                 verticalSpace(24),
                 const DonotReceiveCodeTextAndResendButton()
