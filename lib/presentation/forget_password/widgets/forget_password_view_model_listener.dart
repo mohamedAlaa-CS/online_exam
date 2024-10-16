@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/core/cache/shared_preferences.dart';
 import 'package:online_exam/core/dialogs/app_dialogs.dart';
+import 'package:online_exam/core/helper/constant.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
@@ -30,6 +32,14 @@ class ForgetPassworsViewModelListener extends StatelessWidget {
             }
             break;
           case ForgetPasswordSuccessState():
+            SharedPreferencesHelper.saveData(
+              key: Constant.forgetPasswordUserEmailKey,
+              value: context
+                  .read<ForgetPasswordViewModel>()
+                  .emailController
+                  .text
+                  .trim(),
+            );
             context.pop();
             context.pushName(Routers.verificationCodeView);
 

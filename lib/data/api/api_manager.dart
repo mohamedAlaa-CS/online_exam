@@ -37,7 +37,7 @@ class ApiManager {
     return response.data['message'];
   }
 
-  Future<void> resetCode(String resetCode) async {
+  Future<void> verificationCode(String resetCode) async {
     var response = await _dio
         .post(ApiConstants.resetCodeApi, data: {"resetCode": resetCode});
     return response.data['message'];

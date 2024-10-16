@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
-import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
-import 'package:online_exam/presentation/forget_password/manager/rest_code_view_model/reset_code_view_model.dart';
+import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
 import 'package:online_exam/presentation/forget_password/widgets/donot_receive_code_text_and_resend_button.dart';
-import 'package:online_exam/presentation/forget_password/widgets/reset_code_view_model_listener.dart';
+import 'package:online_exam/presentation/forget_password/widgets/verification_code_view_model_listener.dart';
 import 'package:online_exam/presentation/forget_password/widgets/ttitle_and_description_forget_password.dart';
 import 'package:pinput/pinput.dart';
 
@@ -45,8 +43,9 @@ class VerificationCodeView extends StatelessWidget {
                 ),
                 verticalSpace(32),
                 Pinput(
-                  controller:
-                      context.read<ResetCodeViewModel>().pinPutController,
+                  controller: context
+                      .read<VerificationCodeViewModel>()
+                      .pinPutController,
                   defaultPinTheme: defaultPinTheme,
                   errorPinTheme: defaultPinTheme.copyBorderWith(
                     border: Border.all(color: AppColors.error),
@@ -54,8 +53,7 @@ class VerificationCodeView extends StatelessWidget {
                   length: 6,
                   onCompleted: (pin) {
                     // todo : call verify otp api here & nav to reset password
-                    // context.read<ResetCodeViewModel>().resetCode(pin);
-                    context.pushName(Routers.resetPasswordView);
+                    context.read<VerificationCodeViewModel>().resetCode(pin);
                   },
                 ),
                 verticalSpace(24),

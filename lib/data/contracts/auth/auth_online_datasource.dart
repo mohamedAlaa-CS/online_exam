@@ -14,7 +14,7 @@ abstract class AuthOnlineDatasource {
 
   Future<Result<String?>> forgetPassword(String email);
 
-  Future<Result<void>> resetCode(String resetCode);
+  Future<Result<void>> verificationCode(String resetCode);
 
   Future<Result<void>> resetPassword(String email, String password);
 }

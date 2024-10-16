@@ -20,15 +20,16 @@ import '../../data/repository/auth_repo_impl.dart' as _i10;
 import '../../domin/repositories/auth_repository.dart' as _i9;
 import '../../domin/use_case/auth_use_case/forget_password_use_case.dart'
     as _i11;
-import '../../domin/use_case/auth_use_case/reset_code_use_case.dart' as _i16;
 import '../../domin/use_case/auth_use_case/reset_password_use_case.dart'
     as _i13;
 import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i12;
+import '../../domin/use_case/auth_use_case/verification_code_use_case.dart'
+    as _i16;
 import '../../presentation/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i15;
 import '../../presentation/forget_password/manager/reset_password_view_model/reset_password_view_model.dart'
     as _i18;
-import '../../presentation/forget_password/manager/rest_code_view_model/reset_code_view_model.dart'
+import '../../presentation/forget_password/manager/verification_code_view_model/verification_code_view_model.dart'
     as _i17;
 import '../../presentation/signup/sign_up_viewmodel.dart' as _i14;
 import '../cache/shared_preferences.dart' as _i3;
@@ -65,10 +66,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i14.SignUpViewModel(gh<_i12.SignupUseCase>()));
     gh.factory<_i15.ForgetPasswordViewModel>(
         () => _i15.ForgetPasswordViewModel(gh<_i11.ForgetPasswordUseCase>()));
-    gh.factory<_i16.ResetCodeUseCase>(
-        () => _i16.ResetCodeUseCase(authRepository: gh<_i9.AuthRepository>()));
-    gh.factory<_i17.ResetCodeViewModel>(
-        () => _i17.ResetCodeViewModel(gh<_i16.ResetCodeUseCase>()));
+    gh.factory<_i16.VerificationCodeUseCase>(() =>
+        _i16.VerificationCodeUseCase(authRepository: gh<_i9.AuthRepository>()));
+    gh.factory<_i17.VerificationCodeViewModel>(() =>
+        _i17.VerificationCodeViewModel(gh<_i16.VerificationCodeUseCase>()));
     gh.factory<_i18.ResetPasswordViewModel>(
         () => _i18.ResetPasswordViewModel(gh<_i13.ResetPasswordUseCase>()));
     return this;
