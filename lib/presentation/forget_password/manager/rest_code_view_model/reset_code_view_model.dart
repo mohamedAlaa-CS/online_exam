@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/domin/common/api_result.dart';
@@ -7,10 +8,10 @@ import 'package:online_exam/presentation/forget_password/manager/rest_code_view_
 @injectable
 class ResetCodeViewModel extends Cubit<ResetCodeStates> {
   ResetCodeUseCase resetCodeUseCase;
-
   ResetCodeViewModel(this.resetCodeUseCase) : super(ResetCodeInitial());
-
-  void resetCode(String resetCode) async {
+  static ResetCodeViewModel get(context) => BlocProvider.of(context);
+  TextEditingController pinPutController = TextEditingController();
+  Future<void> resetCode(String resetCode) async {
     emit(ResetCodeLoadingState());
     var result = await resetCodeUseCase.resetCode(resetCode);
     switch (result) {

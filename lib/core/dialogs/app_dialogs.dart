@@ -7,7 +7,7 @@ import 'package:online_exam/core/theming/styles.dart';
 
 class AppDialogs {
   static void showSuccessDialog(BuildContext context) {
-    context.pop();
+    //context.pop();
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -40,7 +40,7 @@ class AppDialogs {
   }
 
   static void showErrorDialog(BuildContext context, String error) {
-    context.pop();
+    // context.pop();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

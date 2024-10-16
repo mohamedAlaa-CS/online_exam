@@ -24,7 +24,7 @@ import '../../domin/use_case/auth_use_case/reset_code_use_case.dart' as _i14;
 import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i11;
 import '../../presentation/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i13;
-import '../../presentation/forget_password/manager/rest_code_view_model/rest_code_view_model.dart'
+import '../../presentation/forget_password/manager/rest_code_view_model/reset_code_view_model.dart'
     as _i15;
 import '../../presentation/signup/sign_up_viewmodel.dart' as _i12;
 
