@@ -25,6 +25,7 @@ class ForgetPassworsViewModelListener extends StatelessWidget {
           case ForgetPasswordErrorState():
             {
               var errorMessage = handellerErrorMessage(state.exception);
+              context.pop();
               AppDialogs.showErrorDialog(context, errorMessage);
             }
             break;
