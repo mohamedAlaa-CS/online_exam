@@ -31,7 +31,12 @@ class ResetPasswordViewModelListener extends StatelessWidget {
             break;
           case ResetPasswordSuccessState():
             context.pop();
-            AppDialogs.showSuccessDialog(context);
+            AppDialogs.showSuccessDialog(
+              context,
+              titile: 'Success Reset Password',
+              description: 'Your password has been reset successfully',
+              buttonText: 'Continue',
+            );
             break;
           case ResetPasswordInitial():
         }

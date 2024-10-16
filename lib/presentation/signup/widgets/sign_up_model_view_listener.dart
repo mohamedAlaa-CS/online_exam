@@ -22,7 +22,10 @@ class SignUpModelViewListener extends StatelessWidget {
           String error = handellerErrorMessage(state.exception);
           AppDialogs.showErrorDialog(context, error);
         } else if (state is SignupSuccessState) {
-          AppDialogs.showSuccessDialog(context);
+          AppDialogs.showSuccessDialog(context,
+              titile: 'Success Signup',
+              description: 'Your account has been created successfully',
+              buttonText: 'Continue');
         }
       },
       child: const SizedBox.shrink(),

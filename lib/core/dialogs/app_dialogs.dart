@@ -6,17 +6,20 @@ import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
 class AppDialogs {
-  static void showSuccessDialog(BuildContext context) {
+  static void showSuccessDialog(BuildContext context,
+      {required String titile,
+      required String description,
+      required String buttonText}) {
     //context.pop();
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Signup Successful'),
-          content: const SingleChildScrollView(
+          title: Text(titile),
+          content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Congratulations, you have signed up successfully!'),
+                Text(description),
               ],
             ),
           ),
@@ -31,7 +34,7 @@ class AppDialogs {
                 context.pop();
                 //todo : navigate to login view
               },
-              child: const Text('Continue'),
+              child: Text(buttonText),
             ),
           ],
         );
