@@ -42,6 +42,8 @@ dependencies:
   flutter_bloc: 
  #Pin code input (OTP) text field
   pinput: ^5.0.0
+  shared_preferences: 
+  flutter_secure_storage: 
 dev_dependencies:
   flutter_test:
     sdk: flutter
