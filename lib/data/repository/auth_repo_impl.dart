@@ -40,4 +40,10 @@ class AuthRepoImpl implements AuthRepository {
   Future<Result<void>> verifiyResetCode(String resetCode) {
     return authOnlineDatasource.resetCode(resetCode);
   }
+  
+  @override
+  Future<Result<void>> resetPassword(String email, String password) {
+    // TODO: implement resetPassword
+    throw UnimplementedError();
+  }
 }
