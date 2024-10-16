@@ -58,4 +58,14 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
       },
     );
   }
+
+  @override
+  Future<Result<void>> resetPassword(String email, String password) {
+    return executeApi<void>(
+      () async {
+        var response = await apiManager.resetPassword(email, password);
+        return response;
+      },
+    );
+  }
 }
