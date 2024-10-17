@@ -68,8 +68,11 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i15.ForgetPasswordViewModel(gh<_i11.ForgetPasswordUseCase>()));
     gh.factory<_i16.VerificationCodeUseCase>(() =>
         _i16.VerificationCodeUseCase(authRepository: gh<_i9.AuthRepository>()));
-    gh.factory<_i17.VerificationCodeViewModel>(() =>
-        _i17.VerificationCodeViewModel(gh<_i16.VerificationCodeUseCase>()));
+    gh.factory<_i17.VerificationCodeViewModel>(
+        () => _i17.VerificationCodeViewModel(
+              gh<_i16.VerificationCodeUseCase>(),
+              gh<_i11.ForgetPasswordUseCase>(),
+            ));
     gh.factory<_i18.ResetPasswordViewModel>(
         () => _i18.ResetPasswordViewModel(gh<_i13.ResetPasswordUseCase>()));
     return this;

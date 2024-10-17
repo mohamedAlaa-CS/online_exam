@@ -34,7 +34,7 @@ class ApiManager {
   Future<String?> forgetPassword(String email) async {
     var response =
         await _dio.post(ApiConstants.forgetPasswordApi, data: {"email": email});
-    return response.data['message'];
+    return response.data['info'];
   }
 
   Future<void> verificationCode(String resetCode) async {

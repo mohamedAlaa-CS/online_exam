@@ -7,8 +7,9 @@ import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
 import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
 import 'package:online_exam/presentation/forget_password/widgets/donot_receive_code_text_and_resend_button.dart';
-import 'package:online_exam/presentation/forget_password/widgets/verification_code_view_model_listener.dart';
+import 'package:online_exam/presentation/forget_password/widgets/resend_otp_view_model_listener.dart';
 import 'package:online_exam/presentation/forget_password/widgets/ttitle_and_description_forget_password.dart';
+import 'package:online_exam/presentation/forget_password/widgets/verification_code_view_model_listener.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationCodeView extends StatelessWidget {
@@ -58,7 +59,8 @@ class VerificationCodeView extends StatelessWidget {
                 ),
                 verticalSpace(24),
                 const DonotReceiveCodeTextAndResendButton(),
-                const ResetCodeViewModelListener(),
+                const VerificationCodeViewModelListener(),
+                const ResendOtpViewModelListener(),
               ],
             ),
           ),
