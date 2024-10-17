@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
@@ -26,7 +28,7 @@ class AlreadyHaveAccountText extends StatelessWidget {
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 //todo : navigate to login view
-                //  context.pushName(Routers.loginScreen);
+                context.pushName(Routers.loginView);
               },
           ),
         ],
