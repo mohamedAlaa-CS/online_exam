@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/dialogs/app_dialogs.dart';
 import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
 import 'package:online_exam/presentation/forget_password/manager/reset_password_view_model/reset_password_states.dart';
 import 'package:online_exam/presentation/forget_password/manager/reset_password_view_model/reset_password_view_model.dart';
@@ -36,6 +37,10 @@ class ResetPasswordViewModelListener extends StatelessWidget {
               titile: 'Success Reset Password',
               description: 'Your password has been reset successfully',
               buttonText: 'Continue',
+              onButtonClicked: () => context.pushNamedAndRemoveUntil(
+                Routers.loginView,
+                predicate: (route) => false,
+              ),
             );
             break;
           case ResetPasswordInitial():

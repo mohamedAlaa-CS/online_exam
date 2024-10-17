@@ -6,10 +6,13 @@ import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
 class AppDialogs {
-  static void showSuccessDialog(BuildContext context,
-      {required String titile,
-      required String description,
-      required String buttonText}) {
+  static void showSuccessDialog(
+    BuildContext context, {
+    required String titile,
+    required String description,
+    required String buttonText,
+    required VoidCallback onButtonClicked,
+  }) {
     //context.pop();
     showDialog(
       context: context,
@@ -30,10 +33,7 @@ class AppDialogs {
                 backgroundColor: AppColors.primary,
                 disabledForegroundColor: Colors.grey,
               ),
-              onPressed: () {
-                context.pop();
-                //todo : navigate to login view
-              },
+              onPressed: onButtonClicked,
               child: Text(buttonText),
             ),
           ],

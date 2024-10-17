@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/dialogs/app_dialogs.dart';
+import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
 import 'package:online_exam/presentation/signup/sign_up_viewmodel.dart';
 import 'package:online_exam/presentation/signup/signup_states.dart';
@@ -22,10 +23,13 @@ class SignUpModelViewListener extends StatelessWidget {
           String error = handellerErrorMessage(state.exception);
           AppDialogs.showErrorDialog(context, error);
         } else if (state is SignupSuccessState) {
-          AppDialogs.showSuccessDialog(context,
-              titile: 'Success Signup',
-              description: 'Your account has been created successfully',
-              buttonText: 'Continue');
+          AppDialogs.showSuccessDialog(
+            context,
+            titile: 'Success Signup',
+            description: 'Your account has been created successfully',
+            buttonText: 'Continue',
+            onButtonClicked: () => context.pop(),
+          );
         }
       },
       child: const SizedBox.shrink(),
