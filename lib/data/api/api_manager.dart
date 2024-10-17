@@ -30,4 +30,22 @@ class ApiManager {
     var authResponse = AuthResponse.fromJson(response.data);
     return authResponse;
   }
+
+  Future<String?> forgetPassword(String email) async {
+    var response =
+        await _dio.post(ApiConstants.forgetPasswordApi, data: {"email": email});
+    return response.data['info'];
+  }
+
+  Future<void> verificationCode(String resetCode) async {
+    var response = await _dio
+        .post(ApiConstants.resetCodeApi, data: {"resetCode": resetCode});
+    return response.data['message'];
+  }
+
+  Future<void> resetPassword(String email, String password) async {
+    var response = await _dio.put(ApiConstants.resetPasswordApi,
+        data: {"email": email, "newPassword": password});
+    return response.data['message'];
+  }
 }

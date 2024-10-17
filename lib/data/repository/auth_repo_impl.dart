@@ -30,4 +30,19 @@ class AuthRepoImpl implements AuthRepository {
       phone,
     );
   }
+
+  @override
+  Future<Result<String?>> forgetPassword(String email) {
+    return authOnlineDatasource.forgetPassword(email);
+  }
+
+  @override
+  Future<Result<void>> verifiyResetCode(String resetCode) {
+    return authOnlineDatasource.verificationCode(resetCode);
+  }
+
+  @override
+  Future<Result<void>> resetPassword(String email, String password) {
+    return authOnlineDatasource.resetPassword(email, password);
+  }
 }

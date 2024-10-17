@@ -9,15 +9,18 @@ class AppButton extends StatelessWidget {
     required this.text,
     this.color,
     required this.onPressed,
+    this.isExpanded = false,
   });
   final String text;
   final Color? color;
   final VoidCallback onPressed;
+  final bool isExpanded;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 48.h,
+      width: isExpanded ? double.infinity : null,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
