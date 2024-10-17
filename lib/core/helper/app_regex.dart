@@ -1,6 +1,6 @@
 class AppRegExp {
   static bool isNameValid(String name) {
-    return RegExp(r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$").hasMatch(name);
+    return RegExp(r"^[A-Za-z]{2,}$").hasMatch(name);
   }
 
   static bool isEmailValid(String email) {
@@ -8,7 +8,7 @@ class AppRegExp {
   }
 
   static bool isPhoneNumberValid(String phoneNumber) {
-    return RegExp(r"^(?:[+0]9)?[0-9]{10}$").hasMatch(phoneNumber);
+    return RegExp(r"^(?:\+20|0)?1[0125]\d{8}$").hasMatch(phoneNumber);
   }
 
   static bool isOTPValid(String otp) {
@@ -24,23 +24,21 @@ class AppRegExp {
   }
 
   static bool isPasswordValid(String password) {
-    return hasLowerCase(password) &&
-        hasUpperCase(password) &&
-        hasNumber(password) &&
-        hasSpecialCharacters(password) &&
-        hasMinLength(password);
+    return RegExp(
+            r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+        .hasMatch(password);
   }
 
   static bool hasLowerCase(String password) {
-    return password.contains(RegExp(r'[a-z]'));
+    return password.contains(RegExp(r"[a-z]"));
   }
 
   static bool hasUpperCase(String password) {
-    return password.contains(RegExp(r'[A-Z]'));
+    return password.contains(RegExp(r"[A-Z]"));
   }
 
   static bool hasNumber(String password) {
-    return password.contains(RegExp(r'[0-9]'));
+    return password.contains(RegExp(r"[0-9]"));
   }
 
   static bool hasSpecialCharacters(String password) {

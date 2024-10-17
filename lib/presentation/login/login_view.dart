@@ -1,35 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam/core/helper/validations.dart';
-import 'package:online_exam/core/widgets/app_text_form_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/di/di.dart';
+import 'package:online_exam/core/helper/dialog.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
+import 'package:online_exam/data/api/handel_exception_error.dart';
+import 'package:online_exam/presentation/login/login_states.dart';
+import 'package:online_exam/presentation/login/login_viewmodel.dart';
+import 'package:online_exam/presentation/login/widgets/form_login.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+  LoginView({super.key});
+
+  final LoginViewModel viewModel = getIt.get<LoginViewModel>();
 
   @override
   Widget build(BuildContext context) {
-    var key = GlobalKey<FormState>();
     return Scaffold(
-      body: Form(
-        key: key,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(
-              child: Text('Login'),
-            ),
-            AppTextFormField(
-              labelText: 'Email',
-              hintText: 'Enter you email',
-              validator: (value) => Validations.validateEmail(context, value),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  if (key.currentState!.validate()) {
-                    print(' valied');
-                  }
-                },
-                child: const Text('test'))
-          ],
+      appBar: AppBar(
+        title: const Text('Login'),
+        titleSpacing: 16.w,
+      ),
+      body: BlocProvider<LoginViewModel>(
+        create: (context) => viewModel,
+        child: BlocConsumer<LoginViewModel, LoginViewState>(
+          listener: (context, state) {
+            switch (state) {
+              case LoginLoadingState():
+                DialogHelper.showLoading(context);
+                break;
+              case LoginErrorState():
+                Navigator.of(context).pop();
+                String errorMessage = handellerErrorMessage(state.exception);
+                DialogHelper.showError(context, errorMessage);
+                break;
+              case LoginSuccessState():
+                Navigator.of(context).pop();
+                context.pushReplacementNamed(Routers.homeView);
+
+              default:
+                break;
+            }
+          },
+          builder: (context, state) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: FormLogin(
+                viewModel: viewModel,
+              ),
+            );
+          },
         ),
       ),
     );

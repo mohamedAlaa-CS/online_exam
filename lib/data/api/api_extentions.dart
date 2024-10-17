@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/common/custom_exception.dart';
 
-Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
+Future<Result<T>> executeApi<T>(Function() apiCall) async {
   try {
     var result = await apiCall.call();
     return Success(result);
