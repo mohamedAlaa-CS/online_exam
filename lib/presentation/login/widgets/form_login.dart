@@ -30,17 +30,15 @@ class FormLogin extends StatelessWidget {
             validator: Validations.validateEmail,
             controller: context.read<LoginViewModel>().emailController,
           ),
-          verticalSpace(20),
           AppTextFormField(
             labelText: 'Password',
             hintText: 'Enter your password',
-            obscureText: true,
+            isObscureText: true,
             validator: Validations.validatePassword,
             controller: context.read<LoginViewModel>().passwordController,
           ),
-          verticalSpace(10),
           RememberAndForgetPassword(viewModel: viewModel),
-          verticalSpace(40),
+          verticalSpace(20),
           SizedBox(
             width: double.infinity,
             child: AppButton(

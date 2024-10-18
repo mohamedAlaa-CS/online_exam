@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 @singleton
 class SharedPreferencesHelper {
   static late SharedPreferences sharedPreferences;
+
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
@@ -23,6 +24,7 @@ class SharedPreferencesHelper {
   /// Saves a [value] with a [key] in the SharedPreferences.
   static saveData({required String key, required dynamic value}) async {
     debugPrint("SharedPrefHelper : setData with key : $key and value : $value");
+
     if (value is String) {
       await sharedPreferences.setString(key, value);
     } else if (value is int) {
@@ -38,26 +40,26 @@ class SharedPreferencesHelper {
 
   /// Gets a bool value from SharedPreferences with given [key].
   static getBool({required String key}) {
-    debugPrint("SharedPrefHelper : getBool with key : $key");
+    debugPrint('SharedPrefHelper : getBool with key : $key');
     return sharedPreferences.getBool(key) ?? false;
   }
 
   /// Gets a double value from SharedPreferences with given [key].
   static getDouble({required String key}) {
-    debugPrint("SharedPrefHelper : getDouble with key : $key");
+    debugPrint('SharedPrefHelper : getDouble with key : $key');
     return sharedPreferences.getDouble(key) ?? 0.0;
   }
 
   /// Gets an int value from SharedPreferences with given [key].
   static getInt({required String key}) {
-    debugPrint("SharedPrefHelper : getInt with key : $key");
+    debugPrint('SharedPrefHelper : getInt with key : $key');
     return sharedPreferences.getInt(key) ?? 0;
   }
 
   /// Gets an String value from SharedPreferences with given [key].
   static getString({required String key}) {
-    debugPrint("SharedPrefHelper : getString with key : $key");
-    return sharedPreferences.getString(key) ?? "";
+    debugPrint('SharedPrefHelper : getString with key : $key');
+    return sharedPreferences.getString(key) ?? '';
   }
 
   /// Saves a [value] with a [key] in the FlutterSecureStorage.
@@ -71,13 +73,13 @@ class SharedPreferencesHelper {
   /// Gets an String value from FlutterSecureStorage with given [key].
   static getSecuredString({required String key}) async {
     const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint("FlutterSecureStorage : getSecuredString with key :");
-    return await flutterSecureStorage.read(key: key) ?? "";
+    debugPrint('FlutterSecureStorage : getSecuredString with key :');
+    return await flutterSecureStorage.read(key: key) ?? '';
   }
 
   /// Removes all keys and values in the FlutterSecureStorage
   static clearAllSecuredData() async {
-    debugPrint("FlutterSecureStorage : all data has been cleared");
+    debugPrint('FlutterSecureStorage : all data has been cleared');
     const flutterSecureStorage = FlutterSecureStorage();
     await flutterSecureStorage.deleteAll();
   }

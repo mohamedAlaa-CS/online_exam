@@ -12,21 +12,26 @@ String handellerErrorMessage(Exception? exception) {
       case DioExceptionType.connectionTimeout:
         message = "Connection timeout with ApiServer";
       case DioExceptionType.sendTimeout:
-        message = "Send timeout with ApiServer";
+        message = 'Send timeout with ApiServer';
+
       case DioExceptionType.receiveTimeout:
-        message = "Receive timeout with ApiServer";
+        message = 'Receive timeout with ApiServer';
+
       case DioExceptionType.badCertificate:
-        message = "badCertificate with api server";
+        message = 'badCertificate with api server';
+
       case DioExceptionType.badResponse:
         String error = serverFailure(exception.exception!.response!.statusCode!,
             exception.exception!.response!.data);
+
         return error;
+
       case DioExceptionType.cancel:
-        return "Request to ApiServer was canceld";
+        return 'Request to ApiServer was canceld';
       case DioExceptionType.connectionError:
-        return "No Internet Connection";
+        return 'No Internet Connection';
       case DioExceptionType.unknown:
-        return "Opps There was an Error, Please try again";
+        return 'Opps There was an Error, Please try again';
     }
     message = exception.exception?.message ?? "something went wrong";
   }
@@ -35,10 +40,10 @@ String handellerErrorMessage(Exception? exception) {
 
 String serverFailure(int statusCode, dynamic response) {
   if (statusCode == 500) {
-    return "There is a problem with server, please try later";
+    return 'There is a problem with server, please try later';
   } else if (statusCode != 200 || statusCode != 201) {
-    return response["message"];
+    return response['message'];
   } else {
-    return "There was an error , please try again";
+    return 'There was an error , please try again';
   }
 }

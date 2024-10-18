@@ -14,4 +14,5 @@ class AppColors {
   static const Color lightRed = Color(0xFFF8D2D2);
   static const Color placeHolder = Color(0xffa6a6a6);
   static const Color white = Color(0xffF9F9F9);
+  static const Color pinPut = Color(0xffDFE7F7);
 }

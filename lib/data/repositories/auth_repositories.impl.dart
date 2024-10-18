@@ -7,8 +7,8 @@ import 'package:online_exam/domin/repositories/auth_repository.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepoImpl implements AuthRepository {
-  AuthOnlineDataSource onlineDatasource;
-  AuthOfflineDataSource offlineDatasource;
+  AuthOnlineDatasource onlineDatasource;
+  AuthOfflineDatasource offlineDatasource;
 
   AuthRepoImpl(this.onlineDatasource, this.offlineDatasource);
 
