@@ -27,6 +27,18 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Future<void> _clearCache() async {
+    // مسح التوكن من الكاش
+    await SharedPreferencesHelper.removeData(key: Constant.keyToken);
+
+    // تحديث حالة الصفحة بعد مسح الكاش
+    setState(() {
+      token = null;
+    });
+
+    print("Cache cleared");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +46,19 @@ class _HomeState extends State<Home> {
         title: const Text("Home"),
       ),
       body: Center(
-        child: token != null
-            ? Text("Token: $token")
-            : const Text("No Token In Cash!"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            token != null
+                ? Text("Token: $token")
+                : const Text("No Token In Cache!"),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _clearCache,
+              child: const Text("Clear Cache"),
+            ),
+          ],
+        ),
       ),
     );
   }

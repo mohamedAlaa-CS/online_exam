@@ -28,12 +28,12 @@ class LoginView extends StatelessWidget {
           listener: (context, state) {
             switch (state) {
               case LoginLoadingState():
-                DialogHelper.showLoading(context);
+                AppDialogs.showLoadingDialog(context);
                 break;
               case LoginErrorState():
                 Navigator.of(context).pop();
                 String errorMessage = handellerErrorMessage(state.exception);
-                DialogHelper.showError(context, errorMessage);
+                AppDialogs.showErrorDialog(context, errorMessage);
                 break;
               case LoginSuccessState():
                 Navigator.of(context).pop();

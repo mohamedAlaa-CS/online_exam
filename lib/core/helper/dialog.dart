@@ -1,41 +1,96 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/theming/colors.dart';
+import 'package:online_exam/core/theming/styles.dart';
 
-class DialogHelper {
-  static void showLoading(BuildContext context) {
-    AwesomeDialog(
+class AppDialogs {
+  static void showSuccessDialog(
+    BuildContext context, {
+    required String titile,
+    required String description,
+    required String buttonText,
+    required VoidCallback onButtonClicked,
+  }) {
+    //context.pop();
+    showDialog(
       context: context,
-      dialogType: DialogType.noHeader,
-      animType: AnimType.scale,
-      body: const Center(
-          child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(
-          AppColors.primary,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(titile),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(description),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: AppColors.primary,
+                disabledForegroundColor: Colors.grey,
+              ),
+              onPressed: onButtonClicked,
+              child: Text(buttonText),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  static void showErrorDialog(BuildContext context, String error) {
+    // context.pop();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(
+          Icons.error,
+          color: Colors.red,
+          size: 32,
         ),
-      )),
-    ).show();
+        content: Text(
+          textAlign: TextAlign.center,
+          error,
+          style: TextStyles.font20Black500Weight.copyWith(fontSize: 16.sp),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: Text(
+              "Got it",
+              style: TextStyles.font16Gray400Weight,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
-  static void showError(BuildContext context, String message) {
-    AwesomeDialog(
+  static void showLoadingDialog(BuildContext context) {
+    //context.pop();
+    showDialog(
       context: context,
-      dialogType: DialogType.error,
-      animType: AnimType.bottomSlide,
-      title: 'Error',
-      desc: message,
-      btnOkOnPress: () {},
-    ).show();
-  }
-
-  static void showSuccess(BuildContext context, String message) {
-    AwesomeDialog(
-      context: context,
-      dialogType: DialogType.success,
-      animType: AnimType.topSlide,
-      title: 'Success',
-      desc: message,
-      btnOkOnPress: () {},
-    ).show();
+      builder: (context) => AlertDialog(
+        content: Row(
+          children: [
+            const CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
+            horizontalSpace(16),
+            Text(
+              textAlign: TextAlign.center,
+              "Loading ...",
+              style: TextStyles.font20Black500Weight.copyWith(fontSize: 16.sp),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

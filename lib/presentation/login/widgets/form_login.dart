@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/helper/validations.dart';
-import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/presentation/login/login_viewmodel.dart';
-import 'package:online_exam/presentation/login/widgets/app_text_form_field.dart';
-import 'package:online_exam/presentation/login/widgets/button_form.dart';
+import 'package:online_exam/core/widgets/app_text_form_field.dart';
+import 'package:online_exam/core/widgets/app_buttom.dart';
+import 'package:online_exam/presentation/login/widgets/remember_forgetpassword.dart';
 import 'package:online_exam/presentation/login/widgets/sign_up.dart';
 
 class FormLogin extends StatelessWidget {
@@ -40,36 +39,7 @@ class FormLogin extends StatelessWidget {
             controller: context.read<LoginViewModel>().passwordController,
           ),
           verticalSpace(10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Checkbox(
-                    activeColor: AppColors.grey,
-                    value: viewModel.rememberMe,
-                    onChanged: (value) {
-                      viewModel.toggleRememberMe();
-                    },
-                  ),
-                  Text('Remember me',
-                      style: TextStyle(
-                          fontSize: 13.sp,
-                          color: AppColors.blackBase,
-                          fontWeight: FontWeight.w400)),
-                ],
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text('Forgot password?',
-                    style: TextStyle(
-                        fontSize: 13.sp,
-                        decoration: TextDecoration.underline,
-                        color: AppColors.blackBase,
-                        fontWeight: FontWeight.w400)),
-              ),
-            ],
-          ),
+          RememberAndForgetPassword(viewModel: viewModel),
           verticalSpace(40),
           SizedBox(
             width: double.infinity,
