@@ -46,13 +46,14 @@ class UserDto {
 
   User toUser() {
     return User(
-        id: id,
-        username: username,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        phone: phone,
-        isVerified: isVerified,
-        token: token);
+      id: id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      isVerified: isVerified,
+      token: token,
+    );
   }
 }

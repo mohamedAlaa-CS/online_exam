@@ -8,8 +8,8 @@ import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/entities/user.dart';
 
-@Injectable(as: AuthOnlineDataSource)
-class AuthOnlineDatasourceImpl implements AuthOnlineDataSource {
+@Injectable(as: AuthOnlineDatasource)
+class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
   ApiManager apiManager;
   AuthOnlineDatasourceImpl(this.apiManager);
 

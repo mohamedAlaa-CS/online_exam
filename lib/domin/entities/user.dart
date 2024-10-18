@@ -1,4 +1,15 @@
 class User {
+  User({
+    this.id,
+    this.username,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.isVerified,
+    this.token,
+  });
+
   String? id;
   String? username;
   String? firstName;
@@ -7,14 +18,4 @@ class User {
   String? phone;
   bool? isVerified;
   String? token;
-
-  User(
-      {this.id,
-      this.username,
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.phone,
-      this.isVerified,
-      this.token});
 }

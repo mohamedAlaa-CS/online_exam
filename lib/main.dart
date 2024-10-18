@@ -7,7 +7,5 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await SharedPreferencesHelper.init();
-  runApp(
-    const OnlineExam(),
-  );
+  runApp(const OnlineExam());
 }

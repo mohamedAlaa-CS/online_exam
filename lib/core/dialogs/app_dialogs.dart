@@ -63,7 +63,7 @@ class AppDialogs {
               context.pop();
             },
             child: Text(
-              "Got it",
+              'Got it',
               style: TextStyles.font16Gray400Weight,
             ),
           ),
@@ -85,7 +85,7 @@ class AppDialogs {
             horizontalSpace(16),
             Text(
               textAlign: TextAlign.center,
-              "Loading ...",
+              'Loading ...',
               style: TextStyles.font20Black500Weight.copyWith(fontSize: 16.sp),
             ),
           ],

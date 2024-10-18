@@ -36,12 +36,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.singleton<_i3.SharedPreferencesHelper>(
         () => _i3.SharedPreferencesHelper());
     gh.lazySingleton<_i4.ApiManager>(() => _i4.ApiManager());
-    gh.factory<_i5.AuthOnlineDataSource>(
+    gh.factory<_i5.AuthOnlineDatasource>(
         () => _i6.AuthOnlineDatasourceImpl(gh<_i4.ApiManager>()));
-    gh.factory<_i7.AuthOfflineDataSource>(() => _i8.AuthOflineDatasourceImpl());
+    gh.factory<_i7.AuthOfflineDatasource>(() => _i8.AuthOflineDatasourceImpl());
     gh.factory<_i9.AuthRepository>(() => _i10.AuthRepoImpl(
-          gh<_i5.AuthOnlineDataSource>(),
-          gh<_i7.AuthOfflineDataSource>(),
+          gh<_i5.AuthOnlineDatasource>(),
+          gh<_i7.AuthOfflineDatasource>(),
         ));
     gh.factory<_i11.LoginUseCase>(
         () => _i11.LoginUseCase(gh<_i9.AuthRepository>()));

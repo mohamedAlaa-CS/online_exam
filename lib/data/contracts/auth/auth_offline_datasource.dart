@@ -1,1 +1,1 @@
-abstract class AuthOfflineDataSource {}
+abstract class AuthOfflineDatasource {}
