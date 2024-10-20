@@ -28,15 +28,13 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> _clearCache() async {
-    // مسح التوكن من الكاش
     await SharedPreferencesHelper.removeData(key: Constant.keyToken);
 
-    // تحديث حالة الصفحة بعد مسح الكاش
     setState(() {
       token = null;
     });
 
-    print("Cache cleared");
+    print("Cache......................");
   }
 
   @override
