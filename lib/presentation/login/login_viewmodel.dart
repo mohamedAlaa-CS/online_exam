@@ -37,7 +37,7 @@ class LoginViewModel extends Cubit<LoginViewState> {
       case Success<User?>():
         {
           if (rememberMe == true) {
-            SharedPreferencesHelper.saveData(
+            SharedPreferencesHelper.setSecuredString(
                 key: Constant.keyToken, value: result.data!.token!);
           }
           emit(LoginSuccessState(result.data));

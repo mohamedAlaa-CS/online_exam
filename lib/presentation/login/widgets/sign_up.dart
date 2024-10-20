@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam/core/dialogs/app_dialogs.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
