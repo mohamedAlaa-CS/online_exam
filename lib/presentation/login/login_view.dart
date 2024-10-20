@@ -10,6 +10,7 @@ import 'package:online_exam/presentation/login/login_states.dart';
 import 'package:online_exam/presentation/login/login_viewmodel.dart';
 import 'package:online_exam/presentation/login/widgets/form_login.dart';
 
+
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
@@ -18,6 +19,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         title: const Text('Login'),
         titleSpacing: 16.w,
@@ -51,6 +53,7 @@ class LoginView extends StatelessWidget {
               ),
             );
           },
+
         ),
       ),
     );

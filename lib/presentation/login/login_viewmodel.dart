@@ -5,7 +5,7 @@ import 'package:online_exam/core/cache/shared_preferences.dart';
 import 'package:online_exam/core/helper/constant.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/entities/user.dart';
-import 'package:online_exam/domin/use_cases/login_use_case.dart';
+import 'package:online_exam/domin/use_case/auth_use_case/login_use_case.dart';
 import 'package:online_exam/presentation/login/login_states.dart';
 
 @injectable
@@ -36,8 +36,8 @@ class LoginViewModel extends Cubit<LoginViewState> {
     switch (result) {
       case Success<User?>():
         {
-          if (rememberMe) {
-            SharedPreferencesHelper.setSecuredString(
+          if (rememberMe == true) {
+            SharedPreferencesHelper.saveData(
                 key: Constant.keyToken, value: result.data!.token!);
           }
           emit(LoginSuccessState(result.data));
