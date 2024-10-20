@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
       token = null;
     });
 
-    print("Cache......................");
+    print("Cache Done");
   }
 
   @override
