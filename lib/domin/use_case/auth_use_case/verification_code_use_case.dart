@@ -7,7 +7,7 @@ class VerificationCodeUseCase {
   final AuthRepository authRepository;
 
   VerificationCodeUseCase({required this.authRepository});
-  Future<Result<void>> resetCode(String resetCode) {
+  Future<Result<void>> verifiyResetCode(String resetCode) {
     return authRepository.verifiyResetCode(resetCode);
   }
 }

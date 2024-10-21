@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
+import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_action.dart';
 import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
 
 class DonotReceiveCodeTextAndResendButton extends StatelessWidget {
@@ -28,7 +29,9 @@ class DonotReceiveCodeTextAndResendButton extends StatelessWidget {
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 //todo : navigate to login view
-                context.read<VerificationCodeViewModel>().resendOtp();
+                context
+                    .read<VerificationCodeViewModel>()
+                    .doAction(ResendOtpAction());
                 //  context.pushName(Routers.loginScreen);
               },
           ),

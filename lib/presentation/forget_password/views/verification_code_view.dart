@@ -5,6 +5,7 @@ import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
+import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_action.dart';
 import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
 import 'package:online_exam/presentation/forget_password/widgets/donot_receive_code_text_and_resend_button.dart';
 import 'package:online_exam/presentation/forget_password/widgets/resend_otp_view_model_listener.dart';
@@ -54,7 +55,10 @@ class VerificationCodeView extends StatelessWidget {
                   length: 6,
                   onCompleted: (pin) {
                     // todo : call verify otp api here & nav to reset password
-                    context.read<VerificationCodeViewModel>().resetCode(pin);
+                    context
+                        .read<VerificationCodeViewModel>()
+                        .doAction(VerifyCodeAction(pin));
+                    // context.read<VerificationCodeViewModel>().resetCode(pin);
                   },
                 ),
                 verticalSpace(24),
