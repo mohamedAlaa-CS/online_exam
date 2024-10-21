@@ -30,15 +30,15 @@ class AppRegExp {
   }
 
   static bool hasLowerCase(String password) {
-    return password.contains(RegExp(r'[a-z]'));
+    return password.contains(RegExp(r"[a-z]"));
   }
 
   static bool hasUpperCase(String password) {
-    return password.contains(RegExp(r'[A-Z]'));
+    return password.contains(RegExp(r"[A-Z]"));
   }
 
   static bool hasNumber(String password) {
-    return password.contains(RegExp(r'[0-9]'));
+    return password.contains(RegExp(r"[0-9]"));
   }
 
   static bool hasSpecialCharacters(String password) {

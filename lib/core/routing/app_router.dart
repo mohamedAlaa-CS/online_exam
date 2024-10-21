@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/di/di.dart';
 import 'package:online_exam/core/routing/routes.dart';
+import 'package:online_exam/presentation/Home.dart';
 import 'package:online_exam/presentation/forget_password/manager/forget_password_view_model/forget_password_view_model.dart';
 import 'package:online_exam/presentation/forget_password/manager/reset_password_view_model/reset_password_view_model.dart';
 import 'package:online_exam/presentation/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
@@ -17,7 +18,11 @@ class AppRouters {
     switch (settings.name) {
       case Routers.loginView:
         return MaterialPageRoute(
-          builder: (context) => const LoginView(),
+          builder: (context) => LoginView(),
+        );
+      case Routers.homeView:
+        return MaterialPageRoute(
+          builder: (context) => const Home(),
         );
       case Routers.signupView:
         return MaterialPageRoute(

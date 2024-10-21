@@ -24,6 +24,13 @@ class ApiManager {
       },
     ));
   }
+
+  Future<AuthResponse?> login(String email, String password) async {
+    var response = await _dio.post(ApiConstants.signInApi,
+        data: {"email": email, "password": password});
+    var authResponse = AuthResponse.fromJson(response.data);
+    return authResponse;
+  }
   Future<AuthResponse?> signup(SignupRequiestBody requestBody) async {
     var response =
         await _dio.post(ApiConstants.signupApi, data: requestBody.toJson());

@@ -2,6 +2,7 @@ import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/entities/user.dart';
 
 abstract class AuthOnlineDatasource {
+  Future<Result<User?>> login(String email, String password);
   Future<Result<User?>> signup(
     String username,
     String firstName,
