@@ -24,7 +24,7 @@ class ResendOtpViewModelListener extends StatelessWidget {
           AppDialogs.showSuccessDialog(
             context,
             titile: 'Success',
-            description: state.message ?? '',
+            description: state.forgetPasswordResponse?.info ?? ' ',
             buttonText: 'ok',
             onButtonClicked: () => context.pop(),
           );

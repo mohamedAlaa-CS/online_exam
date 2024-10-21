@@ -1,3 +1,5 @@
+import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+
 sealed class VerificationCodeStates {}
 
 class VerificationCodeInitial extends VerificationCodeStates {}
@@ -14,9 +16,9 @@ class VerificationCodeErrorState extends VerificationCodeStates {
 class ResetOtpLoadingState extends VerificationCodeStates {}
 
 class ResetOtpSuccessState extends VerificationCodeStates {
-  String? message;
+  ForgetPasswordResponse? forgetPasswordResponse;
 
-  ResetOtpSuccessState(this.message);
+  ResetOtpSuccessState(this.forgetPasswordResponse);
 }
 
 class ResetOtpErrorState extends VerificationCodeStates {

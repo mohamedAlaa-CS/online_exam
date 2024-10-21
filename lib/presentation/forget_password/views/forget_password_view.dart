@@ -44,8 +44,8 @@ class ForgetPasswordView extends StatelessWidget {
                     isExpanded: true,
                     text: 'Submit',
                     onPressed: () {
-                      //todo : call forget password api here & nav to verify otp
-                      checkValidationThenCallForgetPasswordApi(context);
+                      forgetPasswordViewModel
+                          .checkValidationThenCallForgetPasswordApi();
                     },
                   ),
                   const ForgetPassworsViewModelListener(),
@@ -56,15 +56,5 @@ class ForgetPasswordView extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-void checkValidationThenCallForgetPasswordApi(BuildContext context) {
-  if (context
-      .read<ForgetPasswordViewModel>()
-      .forgetPasswordFormKey
-      .currentState!
-      .validate()) {
-    context.read<ForgetPasswordViewModel>().forgetPassword();
   }
 }

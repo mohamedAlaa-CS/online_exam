@@ -7,6 +7,6 @@ class ResetPasswordLoadingState extends ResetPasswordStates {}
 class ResetPasswordSuccessState extends ResetPasswordStates {}
 
 class ResetPasswordErrorState extends ResetPasswordStates {
- Exception? exception;
+  Exception? exception;
   ResetPasswordErrorState(this.exception);
 }

@@ -1,7 +1,9 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/data/api/api_extentions.dart';
 import 'package:online_exam/data/api/api_manager.dart';
+import 'package:online_exam/data/api/model/request/forget_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
+import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/data/api/model/user_dto.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
@@ -51,11 +53,12 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
   }
 
   @override
-  Future<Result<String?>> forgetPassword(String email) {
-    return executeApi<String>(
+  Future<Result<ForgetPasswordResponse>> forgetPassword(
+      ForgetPasswordRequest forgetPasswordRequest) {
+    return executeApi<ForgetPasswordResponse>(
       () async {
-        var response = await apiManager.forgetPassword(email);
-        return response ?? '';
+        var response = await apiManager.forgetPassword(forgetPasswordRequest);
+        return response;
       },
     );
   }

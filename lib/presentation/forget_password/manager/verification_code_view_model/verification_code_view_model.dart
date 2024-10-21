@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/cache/shared_preferences.dart';
 import 'package:online_exam/core/helper/constant.dart';
+import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/use_case/auth_use_case/forget_password_use_case.dart';
 import 'package:online_exam/domin/use_case/auth_use_case/verification_code_use_case.dart';
@@ -51,11 +52,11 @@ class VerificationCodeViewModel extends Cubit<VerificationCodeStates> {
       key: Constant.forgetPasswordUserEmailKey,
     ));
     switch (result) {
-      case Success<String?>():
+      case Success<ForgetPasswordResponse>():
         {
           emit(ResetOtpSuccessState(result.data));
         }
-      case Fail<String?>():
+      case Fail<ForgetPasswordResponse>():
         {
           emit(ResetOtpErrorState(result.exception));
         }

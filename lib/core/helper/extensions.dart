@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-/// to navigate to screen 
+/// to navigate to screen
 /// context.pushName(screenRoute)
 extension Navigation on BuildContext {
   Future<dynamic> pushName(String routeName, {Object? arguments}) {

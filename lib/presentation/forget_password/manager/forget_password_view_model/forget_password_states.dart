@@ -1,3 +1,5 @@
+import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+
 sealed class ForgetPasswordStates {}
 
 class ForgetPasswordInitial extends ForgetPasswordStates {}
@@ -5,9 +7,9 @@ class ForgetPasswordInitial extends ForgetPasswordStates {}
 class ForgetPasswordLoadingState extends ForgetPasswordStates {}
 
 class ForgetPasswordSuccessState extends ForgetPasswordStates {
-  String? message;
+  ForgetPasswordResponse? forgetPasswordResponse;
 
-  ForgetPasswordSuccessState(this.message);
+  ForgetPasswordSuccessState(this.forgetPasswordResponse);
 }
 
 class ForgetPasswordErrorState extends ForgetPasswordStates {
