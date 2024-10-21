@@ -1,5 +1,7 @@
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
+import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/domin/common/api_result.dart';
 import 'package:online_exam/domin/entities/user.dart';
 
@@ -15,9 +17,11 @@ abstract class AuthOnlineDatasource {
     String phone,
   );
 
-  Future<Result<ForgetPasswordResponse>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest);
+  Future<Result<ForgetPasswordResponse>> forgetPassword(
+      ForgetPasswordRequest forgetPasswordRequest);
 
-  Future<Result<void>> verificationCode(String resetCode);
+  Future<Result<VerifiayResetCodeResponse>> verificationCode(
+      VerifiayResetCodeRequest verifiayResetCodeRequest);
 
   Future<Result<void>> resetPassword(String email, String password);
 }

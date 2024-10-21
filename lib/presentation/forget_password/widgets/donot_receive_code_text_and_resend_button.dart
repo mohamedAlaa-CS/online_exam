@@ -32,7 +32,6 @@ class DonotReceiveCodeTextAndResendButton extends StatelessWidget {
                 context
                     .read<VerificationCodeViewModel>()
                     .doAction(ResendOtpAction());
-                //  context.pushName(Routers.loginScreen);
               },
           ),
         ],

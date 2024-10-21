@@ -1,8 +1,10 @@
+import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
+
 sealed class VerificationCodeAction {}
 
 class VerifyCodeAction extends VerificationCodeAction {
-  String verifiyCode;
-  VerifyCodeAction(this.verifiyCode);
+  VerifiayResetCodeRequest verifiayResetCodeRequest;
+  VerifyCodeAction(this.verifiayResetCodeRequest);
 }
 
 class ResendOtpAction extends VerificationCodeAction {}

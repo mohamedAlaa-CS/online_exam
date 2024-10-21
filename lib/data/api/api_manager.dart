@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
+import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/auth_response.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 
 import 'api_constants.dart';
 
@@ -49,10 +51,11 @@ class ApiManager {
     return ForgetPasswordResponse.fromJson(response.data);
   }
 
-  Future<void> verificationCode(String resetCode) async {
-    var response = await _dio
-        .post(ApiConstants.resetCodeApi, data: {"resetCode": resetCode});
-    return response.data['message'];
+  Future<VerifiayResetCodeResponse> verificationCode(
+      VerifiayResetCodeRequest verifiayResetCodeRequest) async {
+    var response = await _dio.post(ApiConstants.resetCodeApi,
+        data: {"resetCode": verifiayResetCodeRequest.resetCode});
+    return VerifiayResetCodeResponse.fromJson(response.data);
   }
 
   Future<void> resetPassword(String email, String password) async {

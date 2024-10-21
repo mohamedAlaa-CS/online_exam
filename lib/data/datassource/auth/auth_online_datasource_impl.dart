@@ -3,7 +3,9 @@ import 'package:online_exam/data/api/api_extentions.dart';
 import 'package:online_exam/data/api/api_manager.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
+import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/data/api/model/user_dto.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
@@ -64,10 +66,12 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
   }
 
   @override
-  Future<Result<void>> verificationCode(String resetCode) {
-    return executeApi<void>(
+  Future<Result<VerifiayResetCodeResponse>> verificationCode(
+      VerifiayResetCodeRequest verifiayResetCodeRequest) {
+    return executeApi<VerifiayResetCodeResponse>(
       () async {
-        var response = await apiManager.verificationCode(resetCode);
+        var response =
+            await apiManager.verificationCode(verifiayResetCodeRequest);
         return response;
       },
     );
