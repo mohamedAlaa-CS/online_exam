@@ -24,10 +24,12 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordStates> {
       case Success<ForgetPasswordResponse>():
         {
           emit(ForgetPasswordSuccessState(result.data));
+          break;
         }
       case Fail<ForgetPasswordResponse>():
         {
           emit(ForgetPasswordErrorState(result.exception));
+          break;
         }
     }
   }
