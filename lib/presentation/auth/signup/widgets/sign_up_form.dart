@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/helper/validations.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
-import 'package:online_exam/presentation/signup/sign_up_viewmodel.dart';
+import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});

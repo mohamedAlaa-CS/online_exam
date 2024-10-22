@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
-import 'package:online_exam/presentation/login/login_viewmodel.dart';
+import 'package:online_exam/presentation/auth/login/login_viewmodel.dart';
 
 class RememberAndForgetPassword extends StatelessWidget {
   const RememberAndForgetPassword({

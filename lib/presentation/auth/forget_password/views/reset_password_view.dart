@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
-import 'package:online_exam/presentation/forget_password/manager/reset_password_view_model/reset_password_view_model.dart';
-import 'package:online_exam/presentation/forget_password/widgets/reset_password_form.dart';
-import 'package:online_exam/presentation/forget_password/widgets/reset_password_view_model_listener.dart';
-import 'package:online_exam/presentation/forget_password/widgets/ttitle_and_description_forget_password.dart';
+import 'package:online_exam/presentation/auth/manager/reset_password_view_model/reset_password_view_model.dart';
+import 'package:online_exam/presentation/auth/forget_password/widgets/reset_password_form.dart';
+import 'package:online_exam/presentation/auth/forget_password/widgets/reset_password_view_model_listener.dart';
+import 'package:online_exam/presentation/auth/forget_password/widgets/ttitle_and_description_forget_password.dart';
 
 class ResetPasswordView extends StatelessWidget {
   const ResetPasswordView({super.key});

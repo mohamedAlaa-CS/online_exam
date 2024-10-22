@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
-import 'package:online_exam/presentation/signup/sign_up_viewmodel.dart';
-import 'package:online_exam/presentation/signup/widgets/already_have_account_and_login_button.dart';
-import 'package:online_exam/presentation/signup/widgets/sign_up_form.dart';
-import 'package:online_exam/presentation/signup/widgets/sign_up_model_view_listener.dart';
+import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
+import 'package:online_exam/presentation/auth/signup/widgets/already_have_account_and_login_button.dart';
+import 'package:online_exam/presentation/auth/signup/widgets/sign_up_form.dart';
+import 'package:online_exam/presentation/auth/signup/widgets/sign_up_model_view_listener.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});

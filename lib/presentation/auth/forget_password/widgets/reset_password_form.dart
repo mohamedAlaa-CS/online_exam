@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/helper/validations.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
-import 'package:online_exam/presentation/forget_password/manager/reset_password_view_model/reset_password_view_model.dart';
+import 'package:online_exam/presentation/auth/manager/reset_password_view_model/reset_password_view_model.dart';
 
 class ResetPasswordForm extends StatefulWidget {
   const ResetPasswordForm({super.key});

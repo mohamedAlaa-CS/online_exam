@@ -4,8 +4,8 @@ import 'package:online_exam/core/dialogs/app_dialogs.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
-import 'package:online_exam/presentation/signup/sign_up_viewmodel.dart';
-import 'package:online_exam/presentation/signup/signup_states.dart';
+import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
+import 'package:online_exam/presentation/auth/signup/signup_states.dart';
 
 class SignUpModelViewListener extends StatelessWidget {
   const SignUpModelViewListener({super.key});
