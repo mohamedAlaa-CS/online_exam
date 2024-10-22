@@ -2,10 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
+import 'package:online_exam/data/api/model/request/reset_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/auth_response.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+import 'package:online_exam/data/api/model/response/reset_password_response.dart';
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 
 import 'api_constants.dart';
@@ -58,9 +60,12 @@ class ApiManager {
     return VerifiayResetCodeResponse.fromJson(response.data);
   }
 
-  Future<void> resetPassword(String email, String password) async {
-    var response = await _dio.put(ApiConstants.resetPasswordApi,
-        data: {"email": email, "newPassword": password});
-    return response.data['message'];
+  Future<ResetPasswordResponse> resetPassword(
+      ResetPasswordRequest resetPasswordRequest) async {
+    var response = await _dio.put(ApiConstants.resetPasswordApi, data: {
+      "email": resetPasswordRequest.email,
+      "newPassword": resetPasswordRequest.newPassword
+    });
+    return ResetPasswordResponse.fromJson(response.data);
   }
 }

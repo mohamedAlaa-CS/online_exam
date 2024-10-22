@@ -2,9 +2,11 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam/data/api/api_extentions.dart';
 import 'package:online_exam/data/api/api_manager.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
+import 'package:online_exam/data/api/model/request/reset_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
+import 'package:online_exam/data/api/model/response/reset_password_response.dart';
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/data/api/model/user_dto.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
@@ -78,10 +80,10 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
   }
 
   @override
-  Future<Result<void>> resetPassword(String email, String password) {
-    return executeApi<void>(
+  Future<Result<ResetPasswordResponse>> resetPassword(ResetPasswordRequest resetPasswordRequest) {
+    return executeApi<ResetPasswordResponse>(
       () async {
-        var response = await apiManager.resetPassword(email, password);
+        var response = await apiManager.resetPassword(resetPasswordRequest);
         return response;
       },
     );
