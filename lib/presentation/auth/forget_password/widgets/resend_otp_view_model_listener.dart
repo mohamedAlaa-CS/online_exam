@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/dialogs/app_dialogs.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
-import 'package:online_exam/presentation/auth/manager/verification_code_view_model/verification_code_states.dart';
-import 'package:online_exam/presentation/auth/manager/verification_code_view_model/verification_code_view_model.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/verification_code_view_model/verification_code_states.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
 
 class ResendOtpViewModelListener extends StatelessWidget {
   const ResendOtpViewModelListener({super.key});

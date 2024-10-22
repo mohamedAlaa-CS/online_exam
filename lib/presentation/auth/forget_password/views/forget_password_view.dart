@@ -6,7 +6,7 @@ import 'package:online_exam/core/helper/validations.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
-import 'package:online_exam/presentation/auth/manager/forget_password_view_model/forget_password_view_model.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart';
 import 'package:online_exam/presentation/auth/forget_password/widgets/forget_password_view_model_listener.dart';
 import 'package:online_exam/presentation/auth/forget_password/widgets/ttitle_and_description_forget_password.dart';
 

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
-import 'package:online_exam/presentation/auth/manager/verification_code_view_model/verification_code_action.dart';
-import 'package:online_exam/presentation/auth/manager/verification_code_view_model/verification_code_view_model.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/verification_code_view_model/verification_code_action.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationPinPutWidget extends StatelessWidget {

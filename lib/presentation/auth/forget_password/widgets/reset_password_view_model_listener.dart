@@ -4,8 +4,8 @@ import 'package:online_exam/core/dialogs/app_dialogs.dart';
 import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
-import 'package:online_exam/presentation/auth/manager/reset_password_view_model/reset_password_states.dart';
-import 'package:online_exam/presentation/auth/manager/reset_password_view_model/reset_password_view_model.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/reset_password_view_model/reset_password_states.dart';
+import 'package:online_exam/presentation/auth/forget_password/manager/reset_password_view_model/reset_password_view_model.dart';
 
 class ResetPasswordViewModelListener extends StatelessWidget {
   const ResetPasswordViewModelListener({super.key});

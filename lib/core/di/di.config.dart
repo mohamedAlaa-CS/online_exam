@@ -24,13 +24,13 @@ import '../../domin/use_case/auth_use_case/reset_password_use_case.dart'
 import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i11;
 import '../../domin/use_case/auth_use_case/verification_code_use_case.dart'
     as _i9;
-import '../../presentation/auth/login/login_viewmodel.dart' as _i16;
-import '../../presentation/auth/manager/forget_password_view_model/forget_password_view_model.dart'
+import '../../presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i15;
-import '../../presentation/auth/manager/reset_password_view_model/reset_password_view_model.dart'
+import '../../presentation/auth/forget_password/manager/reset_password_view_model/reset_password_view_model.dart'
     as _i18;
-import '../../presentation/auth/manager/verification_code_view_model/verification_code_view_model.dart'
+import '../../presentation/auth/forget_password/manager/verification_code_view_model/verification_code_view_model.dart'
     as _i17;
+import '../../presentation/auth/login/login_viewmodel.dart' as _i16;
 import '../../presentation/auth/signup/sign_up_viewmodel.dart' as _i14;
 import '../cache/shared_preferences.dart' as _i3;
 
