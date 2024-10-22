@@ -17,3 +17,5 @@ class SignupSuccessState extends SignupViewState {
   AuthResponse? authResponse;
   SignupSuccessState(this.authResponse);
 }
+
+class SignupValidationButtonState extends SignupViewState {}

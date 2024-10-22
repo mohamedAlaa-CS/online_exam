@@ -22,7 +22,7 @@ class SignUpViewModel extends Cubit<SignupViewState> {
       TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
-  void signup() async {
+  void _signup() async {
     emit(SignupLoadingState());
     var result = await signupUsecase.invoke(
       SignupRequiestBody(
@@ -34,6 +34,7 @@ class SignUpViewModel extends Cubit<SignupViewState> {
           username: nameController.text.trim(),
           phone: phoneController.text.trim()),
     );
+
     switch (result) {
       case Success<AuthResponse?>():
         {
@@ -43,6 +44,22 @@ class SignUpViewModel extends Cubit<SignupViewState> {
         {
           emit(SignupErrorState(result.exception));
         }
+    }
+  }
+
+  bool isSignUpFormValid = true;
+
+  void validateThenDoSignup() {
+    if (formKey.currentState!.validate()) {
+      if (isSignUpFormValid == false) {
+        isSignUpFormValid = true;
+        emit(SignupValidationButtonState());
+      }
+
+      _signup();
+    } else {
+      isSignUpFormValid = false;
+      emit(SignupValidationButtonState());
     }
   }
 }
