@@ -46,6 +46,8 @@ class ForgetPassworsViewModelListener extends StatelessWidget {
             break;
           case ForgetPasswordInitial():
             {}
+          case ForgetPasswordFormValiedState():
+          // TODO: Handle this case.
         }
       },
       child: const SizedBox.shrink(),

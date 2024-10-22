@@ -17,3 +17,4 @@ class ForgetPasswordErrorState extends ForgetPasswordStates {
 
   ForgetPasswordErrorState(this.exception);
 }
+class ForgetPasswordFormValiedState extends ForgetPasswordStates{}

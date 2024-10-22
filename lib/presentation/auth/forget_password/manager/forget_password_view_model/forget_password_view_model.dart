@@ -34,9 +34,18 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordStates> {
     }
   }
 
+  bool isForgetPasswordFormValid = true;
+
   void checkValidationThenCallForgetPasswordApi() {
     if (forgetPasswordFormKey.currentState!.validate()) {
+      if (isForgetPasswordFormValid == false) {
+        isForgetPasswordFormValid = true;
+        emit(ForgetPasswordFormValiedState());
+      }
       _forgetPassword();
+    } else {
+      isForgetPasswordFormValid = false;
+      emit(ForgetPasswordFormValiedState());
     }
   }
 }
