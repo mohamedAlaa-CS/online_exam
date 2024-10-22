@@ -31,7 +31,9 @@ class SignUpModelViewListener extends StatelessWidget {
             titile: 'Success Signup',
             description: 'Your account has been created successfully',
             buttonText: 'Continue',
-            onButtonClicked: () => context.pushName(Routers.loginView),
+            onButtonClicked: () => context.pushNamedAndRemoveUntil(
+                Routers.loginView,
+                predicate: (route) => false),
           );
         }
       },

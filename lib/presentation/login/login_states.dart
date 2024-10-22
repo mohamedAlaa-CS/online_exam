@@ -1,4 +1,4 @@
-import 'package:online_exam/domin/entities/user.dart';
+import 'package:online_exam/data/api/model/response/auth_response/auth_response.dart';
 
 sealed class LoginViewState {}
 
@@ -12,8 +12,8 @@ class LoginErrorState extends LoginViewState {
 }
 
 class LoginSuccessState extends LoginViewState {
-  User? user;
-  LoginSuccessState(this.user);
+  AuthResponse? authResponse;
+  LoginSuccessState(this.authResponse);
 }
 
 class ToggleRemmemberMeLogin extends LoginViewState {}

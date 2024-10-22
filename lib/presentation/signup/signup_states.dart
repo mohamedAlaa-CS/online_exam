@@ -1,4 +1,4 @@
-import 'package:online_exam/domin/entities/user.dart';
+import 'package:online_exam/data/api/model/response/auth_response/auth_response.dart';
 
 sealed class SignupViewState {}
 
@@ -14,6 +14,6 @@ class SignupErrorState extends SignupViewState {
 }
 
 class SignupSuccessState extends SignupViewState {
-  User? user;
-  SignupSuccessState(this.user);
+  AuthResponse? authResponse;
+  SignupSuccessState(this.authResponse);
 }

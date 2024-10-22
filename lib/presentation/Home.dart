@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String? token;
+  dynamic token;
 
   @override
   void initState() {
@@ -19,8 +19,8 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> _getToken() async {
-    String savedToken =
-        SharedPreferencesHelper.getString(key: Constant.keyToken);
+    var savedToken =
+        await SharedPreferencesHelper.getSecuredString(key: Constant.keyToken);
 
     setState(() {
       token = savedToken.isNotEmpty ? savedToken : null;
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> _clearCache() async {
-    await SharedPreferencesHelper.removeData(key: Constant.keyToken);
+    await SharedPreferencesHelper.clearAllSecuredData();
 
     setState(() {
       token = null;

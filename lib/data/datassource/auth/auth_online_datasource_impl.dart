@@ -5,13 +5,12 @@ import 'package:online_exam/data/api/model/request/forget_password_request.dart'
 import 'package:online_exam/data/api/model/request/reset_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
+import 'package:online_exam/data/api/model/response/auth_response/auth_response.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/data/api/model/response/reset_password_response.dart';
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
-import 'package:online_exam/data/api/model/user_dto.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
-import 'package:online_exam/domin/entities/user.dart';
 
 @Injectable(as: AuthOnlineDatasource)
 class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
@@ -20,38 +19,22 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
   AuthOnlineDatasourceImpl(this.apiManager);
 
   @override
-  Future<Result<User?>> login(String email, String password) async {
-    return executeApi<User>(
+  Future<Result<AuthResponse?>> login(String email, String password) async {
+    return executeApi<AuthResponse>(
       () async {
         var authResponse = await apiManager.login(email, password);
-        var userDto = UserDto(token: authResponse?.token);
-        return userDto.toUser();
+        return authResponse;
       },
     );
   }
 
   @override
-  Future<Result<User?>> signup(
-      String username,
-      String firstName,
-      String lastName,
-      String email,
-      String password,
-      String rePassword,
-      String phone) async {
-    var body = SignupRequiestBody(
-        username: username,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        rePassword: rePassword,
-        phone: phone);
-    return executeApi<User>(
+  Future<Result<AuthResponse?>> signup(
+      SignupRequiestBody signupRequiestBody) async {
+    return executeApi<AuthResponse>(
       () async {
-        var response = await apiManager.signup(body);
-        var userDto = UserDto(token: response?.token);
-        return userDto.toUser();
+        var response = await apiManager.signup(signupRequiestBody);
+        return response;
       },
     );
   }
@@ -80,7 +63,8 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
   }
 
   @override
-  Future<Result<ResetPasswordResponse>> resetPassword(ResetPasswordRequest resetPasswordRequest) {
+  Future<Result<ResetPasswordResponse>> resetPassword(
+      ResetPasswordRequest resetPasswordRequest) {
     return executeApi<ResetPasswordResponse>(
       () async {
         var response = await apiManager.resetPassword(resetPasswordRequest);
