@@ -23,36 +23,44 @@ class _MainLayoutViewState extends State<MainLayoutView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: views[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (value) {
-          setState(() {
-            _selectedIndex = value;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: BottomNavBarIcon(
-              isActive: _selectedIndex == 0,
-              imagePath: AppStrings.homeIcon,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (value) {
+            if (_selectedIndex != value) {
+              setState(() {
+                _selectedIndex = value;
+              });
+            }
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: BottomNavBarIcon(
+                isActive: _selectedIndex == 0,
+                imagePath: AppStrings.homeIcon,
+              ),
+              label: AppStrings.explore,
             ),
-            label: AppStrings.explore,
-          ),
-          BottomNavigationBarItem(
-            icon: BottomNavBarIcon(
-              isActive: _selectedIndex == 1,
-              imagePath: AppStrings.resultIcon,
+            BottomNavigationBarItem(
+              icon: BottomNavBarIcon(
+                isActive: _selectedIndex == 1,
+                imagePath: AppStrings.resultIcon,
+              ),
+              label: AppStrings.result,
             ),
-            label: AppStrings.result,
-          ),
-          BottomNavigationBarItem(
-            icon: BottomNavBarIcon(
-              isActive: _selectedIndex == 2,
-              imagePath: AppStrings.personIcon,
+            BottomNavigationBarItem(
+              icon: BottomNavBarIcon(
+                isActive: _selectedIndex == 2,
+                imagePath: AppStrings.personIcon,
+              ),
+              label: AppStrings.profile,
             ),
-            label: AppStrings.profile,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
