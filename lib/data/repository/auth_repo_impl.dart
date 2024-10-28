@@ -9,6 +9,7 @@ import 'package:online_exam/data/api/model/response/reset_password_response.dart
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
+import 'package:online_exam/domin/entities/user_entity.dart';
 import 'package:online_exam/domin/repositories/auth_repository.dart';
 
 @Injectable(as: AuthRepository)
@@ -45,5 +46,11 @@ class AuthRepoImpl implements AuthRepository {
   Future<Result<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest resetPasswordRequest) {
     return authOnlineDatasource.resetPassword(resetPasswordRequest);
+  }
+
+  @override
+  Future<Result<UserEntity?>> getUserInfo(String token) {
+    // TODO: implement getUserInfo
+    throw UnimplementedError();
   }
 }

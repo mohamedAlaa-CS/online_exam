@@ -7,6 +7,7 @@ import 'package:online_exam/data/api/model/response/forget_password_response.dar
 import 'package:online_exam/data/api/model/response/reset_password_response.dart';
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/domin/common/api_result.dart';
+import 'package:online_exam/domin/entities/user_entity.dart';
 
 abstract class AuthRepository {
   Future<Result<AuthResponse?>> login(String email, String password);
@@ -19,4 +20,6 @@ abstract class AuthRepository {
   );
   Future<Result<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest resetPasswordRequest);
+
+  Future<Result<UserEntity?>> getUserInfo(String token);
 }

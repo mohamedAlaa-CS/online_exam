@@ -11,6 +11,7 @@ import 'package:online_exam/data/api/model/response/reset_password_response.dart
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/data/contracts/auth/auth_online_datasource.dart';
 import 'package:online_exam/domin/common/api_result.dart';
+import 'package:online_exam/domin/entities/user_entity.dart';
 
 @Injectable(as: AuthOnlineDatasource)
 class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
@@ -68,6 +69,16 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource {
     return executeApi<ResetPasswordResponse>(
       () async {
         var response = await apiManager.resetPassword(resetPasswordRequest);
+        return response;
+      },
+    );
+  }
+
+  @override
+  Future<Result<UserEntity?>> getUserInfo(String token) {
+    return executeApi<UserEntity?>(
+      () async {
+        var response = await apiManager.getUserInfo(token);
         return response;
       },
     );
