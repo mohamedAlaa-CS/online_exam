@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/di/di.dart';
 import 'package:online_exam/core/routing/routes.dart';
-import 'package:online_exam/presentation/Home.dart';
 import 'package:online_exam/presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart';
 import 'package:online_exam/presentation/auth/forget_password/manager/reset_password_view_model/reset_password_view_model.dart';
 import 'package:online_exam/presentation/auth/forget_password/manager/verification_code_view_model/verification_code_view_model.dart';
@@ -12,6 +11,7 @@ import 'package:online_exam/presentation/auth/forget_password/views/verification
 import 'package:online_exam/presentation/auth/login/login_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
+import 'package:online_exam/presentation/main_layout/main_layout_view.dart';
 
 class AppRouters {
   static Route? onGeneratorRoute(RouteSettings settings) {
@@ -22,7 +22,7 @@ class AppRouters {
         );
       case Routers.homeView:
         return MaterialPageRoute(
-          builder: (context) => const Home(),
+          builder: (context) => const MainLayoutView(),
         );
       case Routers.signupView:
         return MaterialPageRoute(
@@ -42,7 +42,7 @@ class AppRouters {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<VerificationCodeViewModel>(),
-            child: VerificationCodeView(),
+            child: const VerificationCodeView(),
           ),
         );
       case Routers.resetPasswordView:
