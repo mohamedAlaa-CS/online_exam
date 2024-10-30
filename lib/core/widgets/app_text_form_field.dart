@@ -12,6 +12,10 @@ class AppTextFormField extends StatelessWidget {
     this.validator,
     this.isObscureText,
     this.suffixIcon,
+    this.isReadOnly = false,
+    this.focusNode,
+    this.suffixWidget,
+    this.hintStyle,
   });
   final String labelText;
   final String hintText;
@@ -19,6 +23,11 @@ class AppTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool? isObscureText;
   final Widget? suffixIcon;
+  final bool? isReadOnly;
+  final FocusNode? focusNode;
+  final Widget? suffixWidget;
+  final TextStyle? hintStyle;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,15 +36,18 @@ class AppTextFormField extends StatelessWidget {
         controller: controller,
         obscureText: isObscureText ?? false,
         validator: validator,
+        readOnly: isReadOnly ?? false,
+        focusNode: focusNode,
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-
           // floatingLabelStyle: const TextStyle(color: Colors.red),
           errorStyle: const TextStyle(color: AppColors.error),
-          hintStyle: TextStyles.font14PlaceHolder400Weight,
+          hintStyle: hintStyle ?? TextStyles.font14PlaceHolder400Weight,
           labelStyle: TextStyles.font14PlaceHolder400Weight,
           suffixIcon: suffixIcon,
+          suffix: suffixWidget,
+
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.r),
             borderSide: const BorderSide(

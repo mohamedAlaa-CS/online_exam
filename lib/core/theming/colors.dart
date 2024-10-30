@@ -16,4 +16,5 @@ class AppColors {
   static const Color placeHolder = Color(0xffa6a6a6);
   static const Color pinPut = Color(0xffDFE7F7);
   static const Color blue10 = Color(0xffCCD7EB);
+  static const Color blue40 = Color(0xff5679BD);
 }

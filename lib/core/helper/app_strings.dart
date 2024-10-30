@@ -5,6 +5,7 @@ abstract class AppStrings {
   static const String explore = "Explore";
   static const String result = "Result";
   static const String profile = "Profile";
+  static const String update = "Update";
 
   //? icons svg
   static const String svgBase = 'assets/svg/';
