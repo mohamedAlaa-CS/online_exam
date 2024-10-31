@@ -1,4 +1,4 @@
-import 'package:online_exam/domin/entities/user_entity.dart';
+import 'package:online_exam/domin/entities/profile_entity/get_user_info_entity/user.dart';
 
 class UserDto {
   String? id;
@@ -63,7 +63,7 @@ class UserDto {
         'resetCodeVerified': resetCodeVerified,
       };
 
-  UserEntity toEntity() => UserEntity(
+  UserInfoEntity toEntity() => UserInfoEntity(
         id: id,
         username: username,
         firstName: firstName,

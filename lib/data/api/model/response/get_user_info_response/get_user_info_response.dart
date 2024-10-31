@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/profile_entity/get_user_info_entity/get_user_info_entity.dart';
+
 import 'user_dto.dart';
 
 class GetUserInfoResponse {
@@ -19,4 +21,11 @@ class GetUserInfoResponse {
         'message': message,
         'user': user?.toJson(),
       };
+
+  GetUserInfoEntity toEtity() {
+    return GetUserInfoEntity(
+      message: message,
+      user: user?.toEntity(),
+    );
+  }
 }

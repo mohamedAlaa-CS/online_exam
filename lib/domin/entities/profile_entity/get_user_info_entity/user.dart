@@ -1,4 +1,4 @@
-class UserEntity {
+class UserInfoEntity {
   String? id;
   String? username;
   String? firstName;
@@ -12,7 +12,7 @@ class UserEntity {
   DateTime? passwordResetExpires;
   bool? resetCodeVerified;
 
-  UserEntity({
+  UserInfoEntity({
     this.id,
     this.username,
     this.firstName,

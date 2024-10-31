@@ -1,15 +1,15 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/domin/common/api_result.dart';
-import 'package:online_exam/domin/entities/user_entity.dart';
-import 'package:online_exam/domin/repositories/auth_repository.dart';
+import 'package:online_exam/domin/entities/profile_entity/get_user_info_entity/get_user_info_entity.dart';
+import 'package:online_exam/domin/repositories/profile_repository.dart';
 
 @injectable
 class GetUserInfoUseCase {
-  final AuthRepository authRepository;
+  final ProfileRepository profileRepository;
 
-  GetUserInfoUseCase({required this.authRepository});
+  GetUserInfoUseCase({required this.profileRepository});
 
-  Future<Result<UserEntity?>> invoke(String token) async {
-    return await authRepository.getUserInfo(token);
+  Future<Result<GetUserInfoEntity?>> invoke(String token) async {
+    return await profileRepository.getUserInfo(token);
   }
 }

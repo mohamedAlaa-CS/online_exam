@@ -7,7 +7,7 @@ class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
     required this.labelText,
-    required this.hintText,
+    this.hintText,
     this.controller,
     this.validator,
     this.isObscureText,
@@ -18,7 +18,7 @@ class AppTextFormField extends StatelessWidget {
     this.hintStyle,
   });
   final String labelText;
-  final String hintText;
+  final String? hintText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool? isObscureText;
