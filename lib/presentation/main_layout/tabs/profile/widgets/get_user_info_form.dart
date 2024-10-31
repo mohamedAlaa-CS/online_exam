@@ -29,10 +29,12 @@ class GetUserInfoForm extends StatelessWidget {
           var errorMessage = handellerErrorMessage(state.exception);
           AppDialogs.showErrorDialog(context, errorMessage);
         }
+        if (state is GetUserInfoSuccess) {
+          context.pop();
+        }
       },
       builder: (context, state) {
         if (state is GetUserInfoSuccess) {
-          context.pop();
           return Column(
             children: [
               AppTextFormField(
