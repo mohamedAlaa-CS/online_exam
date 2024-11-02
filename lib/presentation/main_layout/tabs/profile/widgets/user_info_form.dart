@@ -13,7 +13,7 @@ class UserInfoForm extends StatelessWidget {
     required this.firstNameController,
     required this.lastNameController,
     required this.emailController,
-     this.passwordController,
+    this.passwordController,
     required this.phoneController,
     this.isAllReadOnly = false,
     this.buttonColor,

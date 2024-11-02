@@ -30,16 +30,18 @@ import '../../domin/use_case/auth_use_case/reset_password_use_case.dart'
 import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i16;
 import '../../domin/use_case/auth_use_case/verification_code_use_case.dart'
     as _i11;
+import '../../domin/use_case/profile_use_case/edit_profile_use_case.dart'
+    as _i21;
 import '../../presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i20;
 import '../../presentation/auth/forget_password/manager/reset_password_view_model/reset_password_view_model.dart'
-    as _i24;
+    as _i25;
 import '../../presentation/auth/forget_password/manager/verification_code_view_model/verification_code_view_model.dart'
-    as _i23;
-import '../../presentation/auth/login/login_viewmodel.dart' as _i22;
+    as _i24;
+import '../../presentation/auth/login/login_viewmodel.dart' as _i23;
 import '../../presentation/auth/signup/sign_up_viewmodel.dart' as _i19;
 import '../../presentation/main_layout/tabs/profile/manager/get_user_info_view_model/get_user_info_view_model.dart'
-    as _i21;
+    as _i22;
 import '../cache/shared_preferences.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -80,17 +82,19 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i19.SignUpViewModel(gh<_i16.SignupUseCase>()));
     gh.factory<_i20.ForgetPasswordViewModel>(
         () => _i20.ForgetPasswordViewModel(gh<_i15.ForgetPasswordUseCase>()));
-    gh.factory<_i21.GetUserInfoViewMOdel>(
-        () => _i21.GetUserInfoViewMOdel(gh<_i14.GetUserInfoUseCase>()));
-    gh.factory<_i22.LoginViewModel>(
-        () => _i22.LoginViewModel(gh<_i17.LoginUseCase>()));
-    gh.factory<_i23.VerificationCodeViewModel>(
-        () => _i23.VerificationCodeViewModel(
+    gh.factory<_i21.EditProfileUseCase>(
+        () => _i21.EditProfileUseCase(gh<_i12.ProfileRepository>()));
+    gh.factory<_i22.GetUserInfoViewMOdel>(
+        () => _i22.GetUserInfoViewMOdel(gh<_i14.GetUserInfoUseCase>()));
+    gh.factory<_i23.LoginViewModel>(
+        () => _i23.LoginViewModel(gh<_i17.LoginUseCase>()));
+    gh.factory<_i24.VerificationCodeViewModel>(
+        () => _i24.VerificationCodeViewModel(
               gh<_i11.VerificationCodeUseCase>(),
               gh<_i15.ForgetPasswordUseCase>(),
             ));
-    gh.factory<_i24.ResetPasswordViewModel>(
-        () => _i24.ResetPasswordViewModel(gh<_i18.ResetPasswordUseCase>()));
+    gh.factory<_i25.ResetPasswordViewModel>(
+        () => _i25.ResetPasswordViewModel(gh<_i18.ResetPasswordUseCase>()));
     return this;
   }
 }
