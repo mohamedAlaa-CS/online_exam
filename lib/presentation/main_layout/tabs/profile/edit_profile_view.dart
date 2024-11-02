@@ -5,8 +5,8 @@ import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/widgets/title_of_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/widgets/image_profile_and_edit_icon.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+class EditProfileView extends StatelessWidget {
+  const EditProfileView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

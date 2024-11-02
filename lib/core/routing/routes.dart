@@ -5,4 +5,5 @@ class Routers {
   static const String verificationCodeView = '/verification_code_view';
   static const String resetPasswordView = '/reset_password_view';
   static const String homeView = '/home';
+  static const String editProfile = '/edit_profile_view';
 }
