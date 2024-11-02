@@ -15,8 +15,8 @@ class ProfileRepoImpl extends ProfileRepository {
   }
 
   @override
-  Future<Result<GetUserInfoEntity?>> editUserInfo(EditProfileRequest editProfileRequest, String token) {
-    // TODO: implement editUserInfo
-    throw UnimplementedError();
+  Future<Result<GetUserInfoEntity?>> editUserInfo(
+      EditProfileRequest editProfileRequest, String token) {
+    return profileOnlineDataSourse.editUserInfo(editProfileRequest, token);
   }
 }

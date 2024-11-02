@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/data/api/model/request/edit_profile_request.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
 import 'package:online_exam/data/api/model/request/reset_password_request.dart';
 import 'package:online_exam/data/api/model/request/signup_request_body.dart';
@@ -80,5 +81,18 @@ class ApiManager {
     );
     var getUserInfoResponse = GetUserInfoResponse.fromJson(response.data);
     return getUserInfoResponse.toEtity();
+  }
+
+  Future<GetUserInfoEntity?> editUserInfo(
+      EditProfileRequest editProfileRequest, String token) async {
+    var response = await _dio.put(
+      ApiConstants.editUserInfoApi,
+      data: editProfileRequest.toJson(),
+      options: Options(
+        headers: {"token": token},
+      ),
+    );
+    var editUserInfoResponse = GetUserInfoResponse.fromJson(response.data);
+    return editUserInfoResponse.toEtity();
   }
 }
