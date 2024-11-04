@@ -4,19 +4,19 @@ import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
 class AppTextFormField extends StatelessWidget {
-  const AppTextFormField({
-    super.key,
-    required this.labelText,
-    this.hintText,
-    this.controller,
-    this.validator,
-    this.isObscureText,
-    this.suffixIcon,
-    this.isReadOnly = false,
-    this.focusNode,
-    this.suffixWidget,
-    this.hintStyle,
-  });
+  const AppTextFormField(
+      {super.key,
+      required this.labelText,
+      this.hintText,
+      this.controller,
+      this.validator,
+      this.isObscureText,
+      this.suffixIcon,
+      this.isReadOnly = false,
+      this.focusNode,
+      this.suffixWidget,
+      this.hintStyle,
+      this.initialValue});
   final String labelText;
   final String? hintText;
   final TextEditingController? controller;
@@ -27,6 +27,7 @@ class AppTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final Widget? suffixWidget;
   final TextStyle? hintStyle;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class AppTextFormField extends StatelessWidget {
       padding: EdgeInsets.only(top: 24.h),
       child: TextFormField(
         controller: controller,
+        initialValue: initialValue,
         obscureText: isObscureText ?? false,
         validator: validator,
         readOnly: isReadOnly ?? false,
