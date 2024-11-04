@@ -4,14 +4,20 @@ import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/theming/colors.dart';
 
 class MainBackButton extends StatelessWidget {
-  const MainBackButton({super.key, this.color = Colors.black});
+  const MainBackButton({
+    super.key,
+    this.color = Colors.black,
+    this.popWithResult = false,
+  });
   final Color color;
+
+  final bool popWithResult;
   @override
   Widget build(BuildContext context) {
     return Navigator.canPop(context)
         ? InkWell(
             onTap: () {
-              context.pop();
+              popWithResult ? context.popWithResult() : context.pop();
             },
             borderRadius: BorderRadius.circular(12),
             child: Padding(

@@ -25,7 +25,10 @@ class EditProfileView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const TitleOfView(title: AppStrings.profile),
+                  const TitleOfView(
+                    title: AppStrings.profile,
+                    popWithResult: true,
+                  ),
                   verticalSpace(24),
                   ImageProfileAndEditIcon(
                     imageUrl:

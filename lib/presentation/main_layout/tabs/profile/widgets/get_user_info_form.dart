@@ -38,12 +38,16 @@ class GetUserInfoForm extends StatelessWidget {
             phoneInitialValue: userData?.phone,
             passwordInitialValue: '123456',
             isAllReadOnly: true,
-            onbuttonClicked: () {
+            onbuttonClicked: () async {
               //todo: nav to edit profile
-              context.pushName(
+              var result = await context.pushName(
                 Routers.editProfile,
                 arguments: userData,
               );
+
+              if (result == true) {
+                viewModel.convertTokenAndGetUserInfo();
+              }
             },
           );
         }

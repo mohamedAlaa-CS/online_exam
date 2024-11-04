@@ -51,6 +51,7 @@ class EditUserInfoForm extends StatelessWidget {
         }
 
         return UserInfoForm(
+          formKey: viewModel.editProfileFormKey,
           userNameController: viewModel.userNameController,
           firstNameController: viewModel.firstNameController,
           lastNameController: viewModel.lastNameController,

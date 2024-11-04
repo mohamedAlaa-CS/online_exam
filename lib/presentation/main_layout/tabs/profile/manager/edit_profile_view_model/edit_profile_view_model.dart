@@ -20,8 +20,12 @@ class EditProfileViewModel extends Cubit<EditProfileStates> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController =
       TextEditingController(text: '123456');
+
+  GlobalKey<FormState> editProfileFormKey = GlobalKey<FormState>();
   Future<void> convertTokenAndEditUserInfo() async {
-    return await convertTokenToString().then((token) => _editProfile(token));
+    if (editProfileFormKey.currentState!.validate()) {
+      return await convertTokenToString().then((token) => _editProfile(token));
+    }
   }
 
   _editProfile(String token) async {
