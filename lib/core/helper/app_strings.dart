@@ -11,7 +11,6 @@ abstract class AppStrings {
   static const String newPassword = 'New password';
   static const String confirmPassword = 'Confirm password';
 
-
   //? icons svg
   static const String svgBase = 'assets/svg/';
   static const String homeIcon = "${svgBase}home_ic.svg";
