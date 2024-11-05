@@ -13,6 +13,7 @@ import 'package:online_exam/presentation/auth/login/login_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
 import 'package:online_exam/presentation/main_layout/main_layout_view.dart';
+import 'package:online_exam/presentation/main_layout/tabs/profile/change_password_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/edit_profile_view.dart';
 
 class AppRouters {
@@ -58,6 +59,10 @@ class AppRouters {
         final args = settings.arguments as UserInfoEntity;
         return MaterialPageRoute(
           builder: (context) => EditProfileView(user: args),
+        );
+      case Routers.changePassword:
+        return MaterialPageRoute(
+          builder: (context) => const ChangePasswordView(),
         );
 
       default:

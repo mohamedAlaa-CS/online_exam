@@ -22,15 +22,15 @@ class MainBackButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             child: Padding(
               padding: EdgeInsetsDirectional.only(
-                start: 12.w,
+                start: 4.w,
                 top: 8.h,
                 bottom: 8.h,
                 end: 4.w,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.arrow_back_ios,
                 color: AppColors.black,
-                size: 26,
+                size: 22.w,
               ),
             ),
           )

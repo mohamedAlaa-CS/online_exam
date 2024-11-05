@@ -6,6 +6,11 @@ abstract class AppStrings {
   static const String result = "Result";
   static const String profile = "Profile";
   static const String update = "Update";
+  static const String resetPassword = "Reset password";
+  static const String currentPassword = 'Current password';
+  static const String newPassword = 'New password';
+  static const String confirmPassword = 'Confirm password';
+
 
   //? icons svg
   static const String svgBase = 'assets/svg/';

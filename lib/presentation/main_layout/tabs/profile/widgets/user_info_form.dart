@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/core/helper/app_strings.dart';
+import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/helper/validations.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
@@ -102,7 +104,9 @@ class UserInfoForm extends StatelessWidget {
             hintStyle: TextStyles.font16Black400Weight,
             labelText: 'Password',
             suffixWidget: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.pushName(Routers.changePassword);
+              },
               child: Text(
                 'Change',
                 style: TextStyles.font12Primary600Weight,
