@@ -62,7 +62,7 @@ class AppRouters {
         );
       case Routers.changePassword:
         return MaterialPageRoute(
-          builder: (context) => const ChangePasswordView(),
+          builder: (context) => ChangePasswordView(),
         );
 
       default:

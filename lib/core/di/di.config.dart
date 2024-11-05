@@ -30,6 +30,8 @@ import '../../domin/use_case/auth_use_case/reset_password_use_case.dart' as _i2;
 import '../../domin/use_case/auth_use_case/sign_up_use_case.dart' as _i303;
 import '../../domin/use_case/auth_use_case/verification_code_use_case.dart'
     as _i877;
+import '../../domin/use_case/profile_use_case/change_password_use_case.dart'
+    as _i120;
 import '../../domin/use_case/profile_use_case/edit_profile_use_case.dart'
     as _i987;
 import '../../presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
@@ -40,6 +42,8 @@ import '../../presentation/auth/forget_password/manager/verification_code_view_m
     as _i412;
 import '../../presentation/auth/login/login_viewmodel.dart' as _i651;
 import '../../presentation/auth/signup/sign_up_viewmodel.dart' as _i1056;
+import '../../presentation/main_layout/tabs/profile/manager/change_password_view_model/change_password_view_model.dart'
+    as _i457;
 import '../../presentation/main_layout/tabs/profile/manager/edit_profile_view_model/edit_profile_view_model.dart'
     as _i451;
 import '../../presentation/main_layout/tabs/profile/manager/get_user_info_view_model/get_user_info_view_model.dart'
@@ -85,12 +89,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1056.SignUpViewModel(gh<_i303.SignupUseCase>()));
     gh.factory<_i234.ForgetPasswordViewModel>(
         () => _i234.ForgetPasswordViewModel(gh<_i2.ForgetPasswordUseCase>()));
+    gh.factory<_i120.ChangePasswordUseCase>(
+        () => _i120.ChangePasswordUseCase(gh<_i991.ProfileRepository>()));
     gh.factory<_i987.EditProfileUseCase>(
         () => _i987.EditProfileUseCase(gh<_i991.ProfileRepository>()));
     gh.factory<_i646.GetUserInfoViewMOdel>(
         () => _i646.GetUserInfoViewMOdel(gh<_i386.GetUserInfoUseCase>()));
     gh.factory<_i651.LoginViewModel>(
         () => _i651.LoginViewModel(gh<_i490.LoginUseCase>()));
+    gh.factory<_i457.ChangePasswordViewModel>(
+        () => _i457.ChangePasswordViewModel(gh<_i120.ChangePasswordUseCase>()));
     gh.factory<_i412.VerificationCodeViewModel>(
         () => _i412.VerificationCodeViewModel(
               gh<_i877.VerificationCodeUseCase>(),

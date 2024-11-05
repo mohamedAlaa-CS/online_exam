@@ -23,6 +23,7 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordStates> {
   GlobalKey<FormState> changePasswordFormKey = GlobalKey<FormState>();
 
   Future<void> getTokenThenChangePassword() async {
+    if (!changePasswordFormKey.currentState!.validate()) return;
     await convertTokenToString().then((token) => _changePassword(token));
   }
 

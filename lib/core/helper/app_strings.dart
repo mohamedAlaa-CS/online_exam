@@ -10,6 +10,8 @@ abstract class AppStrings {
   static const String currentPassword = 'Current password';
   static const String newPassword = 'New password';
   static const String confirmPassword = 'Confirm password';
+  static const String success = 'Success';
+  static const String continuetext = 'Continue';
 
   //? icons svg
   static const String svgBase = 'assets/svg/';
