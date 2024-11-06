@@ -19,4 +19,7 @@ extension Navigation on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
+  void popWithResult([bool result = true]) {
+    Navigator.of(this).pop(result);
+  }
 }

@@ -8,4 +8,6 @@ class Routers {
   static const String examsView = '/exams';
   static const String startExamView = '/start_exam';
   static const String questionsAnswers = '/questions_answers';
+  static const String editProfile = '/edit_profile_view';
+  static const String changePassword = '/change_password_view';
 }
