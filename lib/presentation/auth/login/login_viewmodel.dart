@@ -42,6 +42,10 @@ class LoginViewModel extends Cubit<LoginViewState> {
               value: result.data?.token ?? '',
             );
           }
+          SharedPreferencesHelper.setSecuredString(
+            key: Constant.savedKeyToken,
+            value: result.data?.token ?? '',
+          );
           emit(LoginSuccessState(result.data));
         }
 

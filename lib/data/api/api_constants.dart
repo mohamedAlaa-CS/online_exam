@@ -5,4 +5,7 @@ class ApiConstants {
   static const String forgetPasswordApi = "auth/forgotPassword";
   static const String resetCodeApi = "auth/verifyResetCode";
   static const String resetPasswordApi = "auth/resetPassword";
+  static const String getAllSubjectsApi = "subjects";
+  static const String getExamsBySubjectIdApi = "exams";
+  static const String getQuestionAnswersByExamId = "questions";
 }

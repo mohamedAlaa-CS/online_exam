@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/core/helper/app_strings.dart';
-import 'package:online_exam/presentation/main_layout/tabs/explore/explore_view.dart';
+import 'package:online_exam/presentation/main_layout/tabs/explore/subjects/view/explore_subject_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/profile_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/result/result_view.dart';
 import 'package:online_exam/presentation/main_layout/widgets/bottm_nav_bar_icon_widget.dart';
@@ -15,7 +15,7 @@ class MainLayoutView extends StatefulWidget {
 class _MainLayoutViewState extends State<MainLayoutView> {
   int _selectedIndex = 0;
   List<Widget> views = [
-    const ExploreView(),
+    ExploreSubject(),
     const ResultView(),
     const ProfileView(),
   ];
