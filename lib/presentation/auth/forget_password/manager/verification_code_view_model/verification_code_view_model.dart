@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/cache/shared_preferences.dart';
 import 'package:online_exam/core/helper/constant.dart';
+import 'package:online_exam/data/api/model/request/forget_password_request.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
@@ -58,10 +59,11 @@ class VerificationCodeViewModel extends Cubit<VerificationCodeStates> {
 
   void _resendOtp() async {
     emit(ResetOtpLoadingState());
-    var result = await forgetPasswordUseCase
-        .forgetPassword(SharedPreferencesHelper.getString(
+    var result =
+        await forgetPasswordUseCase.forgetPassword(ForgetPasswordRequest(
+            email: SharedPreferencesHelper.getString(
       key: Constant.forgetPasswordUserEmailKey,
-    ));
+    )));
     switch (result) {
       case Success<ForgetPasswordResponse>():
         {
