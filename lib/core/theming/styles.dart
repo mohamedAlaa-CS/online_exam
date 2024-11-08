@@ -58,6 +58,12 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.white,
   );
+
+  static TextStyle font16BlueBase500Weight = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blueBase,
+  );
   static TextStyle font16Black400Weight = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
@@ -75,13 +81,6 @@ class TextStyles {
     height: 21.78 / 18.sp,
   );
 
-  static TextStyle font16Black400Weight = TextStyle(
-    fontFamily: 'Inter',
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-    height: 19.36 / 16.sp,
-  );
   static TextStyle font16BlackBase500Weight = TextStyle(
     fontFamily: 'Inter',
     fontSize: 16.sp,

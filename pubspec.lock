@@ -327,10 +327,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_svg
-      sha256: "1b7723a814d84fb65869ea7115cdb3ee7c3be5a27a755c1ec60e049f6b9fcbb2"
+      sha256: de82e6bf958cec7190fbc1c5298282c851228e35ae2b14e2b103e7f777818c64
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.11"
+    version: "2.0.13"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -373,6 +373,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  hive:
+    dependency: "direct main"
+    description:
+      name: hive
+      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
+  hive_flutter:
+    dependency: "direct main"
+    description:
+      name: hive_flutter
+      sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   http:
     dependency: transitive
     description:
@@ -545,17 +561,10 @@ packages:
     dependency: transitive
     description:
       name: path_parsing
-<<<<<<< HEAD
-      sha256: "45f7d6bba1128761de5540f39d5ca000ea8a1f22f06b76b61094a60a2997bd0e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
-=======
       sha256: "883402936929eac138ee0a45da5b0f2c80f89913e6dc3bf77eb65b84b409c6ca"
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
->>>>>>> 9968e7df448b24e59ec286893247c712f8db4b54
   path_provider:
     dependency: transitive
     description:
@@ -604,6 +613,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  percent_indicator:
+    dependency: "direct main"
+    description:
+      name: percent_indicator
+      sha256: c37099ad833a883c9d71782321cb65c3a848c21b6939b6185f0ff6640d05814c
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.3"
   petitparser:
     dependency: transitive
     description:
@@ -861,10 +878,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics
-      sha256: "0b9149c6ddb013818075b072b9ddc1b89a5122fff1275d4648d297086b46c4f0"
+      sha256: "773c9522d66d523e1c7b25dfb95cc91c26a1e17b107039cfe147285e92de7878"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.12"
+    version: "1.1.14"
   vector_graphics_codec:
     dependency: transitive
     description:
@@ -877,10 +894,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics_compiler
-      sha256: f3b9b6e4591c11394d4be4806c63e72d3a41778547b2c1e2a8a04fadcfd7d173
+      sha256: "26d520739b7c6b5d2a2b3274427874a8390831fd4cd5bb8cfbd7d913477d3a2e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.12"
+    version: "1.1.14"
   vector_math:
     dependency: transitive
     description:
@@ -933,17 +950,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-<<<<<<< HEAD
-      sha256: "10169d3934549017f0ae278ccb07f828f9d6ea21573bab0fb77b0e1ef0fce454"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.7.2"
-=======
       sha256: "84ba388638ed7a8cb3445a320c8273136ab2631cd5f2c57888335504ddab1bc2"
       url: "https://pub.dev"
     source: hosted
     version: "5.8.0"
->>>>>>> 9968e7df448b24e59ec286893247c712f8db4b54
   xdg_directories:
     dependency: transitive
     description:

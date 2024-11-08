@@ -10,4 +10,5 @@ class Routers {
   static const String questionsAnswers = '/questions_answers';
   static const String editProfile = '/edit_profile_view';
   static const String changePassword = '/change_password_view';
+  static const String examResult = '/exam_result';
 }

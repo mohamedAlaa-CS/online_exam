@@ -24,7 +24,7 @@ class QuestionsViewModel extends Cubit<QuestionAnswerState> {
   String? exanName;
   int minutes = 0;
   int correctAnswersCount = 0;
-
+  bool isLastQuestion = false;
   List<String?> selectedAnswers = [];
 
   void fetchQuestions() async {
@@ -59,11 +59,15 @@ class QuestionsViewModel extends Cubit<QuestionAnswerState> {
       currentIndex++;
       emit(QuestionAnswerSuccessState(questions![currentIndex]));
     }
+    if (currentIndex == questions!.length - 1) {
+      isLastQuestion = true;
+    }
   }
 
   void goToPreviousQuestion() {
     if (questions != null && currentIndex > 0) {
       currentIndex--;
+      isLastQuestion = false;
       emit(QuestionAnswerSuccessState(questions![currentIndex]));
     }
   }
@@ -102,15 +106,17 @@ class QuestionsViewModel extends Cubit<QuestionAnswerState> {
     return "$minutes:$secs";
   }
 
-  @override
-  Future<void> close() {
-    timer?.cancel();
-    return super.close();
-  }
-
   void answerQuestion(String selectedKey) {
     final currentQuestion = questions![currentIndex];
+    final previousAnswer = selectedAnswers[currentIndex];
+
     selectedAnswers[currentIndex] = selectedKey;
+
+    if (previousAnswer != null) {
+      if (currentQuestion.correctAnswerKey == previousAnswer) {
+        correctAnswersCount--;
+      }
+    }
 
     if (currentQuestion.correctAnswerKey == selectedKey) {
       correctAnswersCount++;
@@ -120,5 +126,11 @@ class QuestionsViewModel extends Cubit<QuestionAnswerState> {
     }
 
     emit(QuestionAnswerSuccessState(currentQuestion));
+  }
+
+  @override
+  Future<void> close() {
+    timer?.cancel();
+    return super.close();
   }
 }

@@ -14,6 +14,7 @@ import 'package:online_exam/presentation/auth/login/login_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
 import 'package:online_exam/presentation/main_layout/main_layout_view.dart';
+import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/exam_result.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/questionanswer_viewModel.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/questions_answers.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/exams/view/exam.dart';
@@ -116,6 +117,14 @@ class AppRouters {
       case Routers.changePassword:
         return MaterialPageRoute(
           builder: (context) => ChangePasswordView(),
+        );
+      case Routers.examResult:
+        final args = settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (context) => ExamResult(
+            score: args?['score'] ?? 0,
+            totalQuestions: args?['totalQuestions'] ?? 0,
+          ),
         );
 
       default:

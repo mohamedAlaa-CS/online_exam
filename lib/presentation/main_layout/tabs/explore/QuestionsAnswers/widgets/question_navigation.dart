@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/routing/app_router.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
+import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/questionanswer_state.dart';
+import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/questionanswer_viewModel.dart';
 
 class CustomNavigationButtons extends StatelessWidget {
   final VoidCallback onBackPressed;
@@ -20,7 +24,6 @@ class CustomNavigationButtons extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // زر Back
           SizedBox(
             width: 163.w,
             height: 48.h,
@@ -56,7 +59,9 @@ class CustomNavigationButtons extends StatelessWidget {
                 padding: EdgeInsets.zero,
               ),
               child: Text(
-                "Next",
+                (BlocProvider.of<QuestionsViewModel>(context).isLastQuestion)
+                    ? 'Submit'
+                    : 'Next',
                 style: TextStyles.font16White500Weight,
               ),
             ),

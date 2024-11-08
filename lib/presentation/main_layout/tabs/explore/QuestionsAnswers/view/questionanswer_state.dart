@@ -29,3 +29,5 @@ class QuestionAnswerTimeUpdatedState extends QuestionAnswerState {
 }
 
 class QuestionAnswerTimeUpState extends QuestionAnswerState {}
+
+class QuestionAnswerSubmitState extends QuestionAnswerState {}

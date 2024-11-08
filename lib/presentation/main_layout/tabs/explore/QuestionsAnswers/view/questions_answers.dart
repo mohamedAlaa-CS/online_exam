@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/dialogs/app_dialogs.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/domin/entities/exam.dart';
+import 'package:online_exam/presentation/Home.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/questionanswer_state.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/view/questionanswer_viewModel.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/QuestionsAnswers/widgets/answers.dart';
@@ -17,21 +21,28 @@ class QuestionsAnswers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: BlocListener<QuestionsViewModel, QuestionAnswerState>(
-            listener: (context, state) {
-              if (state is QuestionAnswerTimeUpState) {
-                showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (context) => const TimeFinished(),
-                );
-              }
-            },
+    return BlocListener<QuestionsViewModel, QuestionAnswerState>(
+      listener: (context, state) {
+        if (state is QuestionAnswerTimeUpState) {
+          final viewModel = BlocProvider.of<QuestionsViewModel>(context);
+          final correctAnswers = viewModel.correctAnswersCount;
+          final totalQuestions = viewModel.questions!.length;
+
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) => TimeFinished(
+              correctAnswers: correctAnswers,
+              totalQuestions: totalQuestions,
+            ),
+          );
+        }
+      },
+      child: Scaffold(
+        appBar: AppBarWidget(),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: BlocBuilder<QuestionsViewModel, QuestionAnswerState>(
               buildWhen: (previous, current) =>
                   current is! QuestionAnswerTimeUpdatedState &&
@@ -50,8 +61,28 @@ class QuestionsAnswers extends StatelessWidget {
                               .goToPreviousQuestion();
                         },
                         onNextPressed: () {
-                          BlocProvider.of<QuestionsViewModel>(context)
-                              .goToNextQuestion();
+                          if (BlocProvider.of<QuestionsViewModel>(context)
+                              .isLastQuestion) {
+                            final correctAnswers =
+                                BlocProvider.of<QuestionsViewModel>(context)
+                                    .correctAnswersCount;
+                            final totalQuestions =
+                                BlocProvider.of<QuestionsViewModel>(context)
+                                    .questions!
+                                    .length;
+
+                            context.pushNamedAndRemoveUntil(
+                              Routers.examResult,
+                              arguments: {
+                                'score': correctAnswers,
+                                'totalQuestions': totalQuestions,
+                              },
+                              predicate: (route) => false,
+                            );
+                          } else {
+                            BlocProvider.of<QuestionsViewModel>(context)
+                                .goToNextQuestion();
+                          }
                         },
                       ),
                     ],
