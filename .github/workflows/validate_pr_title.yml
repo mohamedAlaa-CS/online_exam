@@ -2,6 +2,10 @@ name: Validate PR Title
 
 on:
   pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
 
 jobs:
   validate-pr-title:
@@ -14,18 +18,15 @@ jobs:
 
           PR_TITLE="${{ github.event.pull_request.title }}"
 
-          # إزالة المسافات الزائدة
-          PR_TITLE=$(echo "$PR_TITLE" | xargs)
-          echo "Normalized PR Title: '$PR_TITLE'"
+          # Define regex to validate PR title format
+          TITLE_REGEX='^(fix|release|feat|hotfix|build|test)\/([A-Za-z0-9-]+)-\d+[- ]+[A-Za-z0-9 ]+$'
 
-          # تعديbbل الـ regex ليتناسب مع الشكل المطلوب
-          TITLE_REGEX='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-\d+-[A-Za-z0-9 ]+$'
-
+          # Validate PR title using regex
           if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
-            echo "❌ PR title does not match the expected format: 'type/TicketNum-TaskName'"
-            echo "Allowed types: fix, release, feat, hotfix, build, test, feature"
+            echo "❌ PR title does not match the expected format: 'type/scope: TicketNum-task name'"
+            echo "Allowed types: fix, release, feat, hotfix, build, test"
+            echo "Allowed scopes: {project-ID-ticket num}, JIRA-\d+, [A-Z]+-\d+"
             exit 1
           fi
 
           echo "✅ PR title is valid."
-  
