@@ -14,8 +14,8 @@ jobs:
 
           PR_TITLE="${{ github.event.pull_request.title }}"
 
-          # Regex for PR title validation to match 'type/TicketNum-task name'
-          TITLE_REGEX='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-\d+-.*$'
+          # تعديل الـ regex ليتقبل العنوان مع رقم الـ PR (#<رقم>)
+          TITLE_REGEX='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-\d+-.*[^#]*$'
 
           if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
             echo "❌ PR title does not match the expected format: 'type/TicketNum-task name'"
