@@ -14,11 +14,11 @@ jobs:
 
           PR_TITLE="${{ github.event.pull_request.title }}"
 
-          # تعديل الـ regex ليتقبل العنوان مع رقم الـ PR (#<رقم>)
-          TITLE_REGEX='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-\d+-.*[^#]*$'
+          # تعديل الـ regex ليتناسب مع الشكل المطلوب
+          TITLE_REGEX='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-\d+-[A-Za-z0-9]+$'
 
           if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
-            echo "❌ PR title does not match the expected format: 'type/TicketNum-task name'"
+            echo "❌ PR title does not match the expected format: 'type/TicketNum-TaskName'"
             echo "Allowed types: fix, release, feat, hotfix, build, test, feature"
             exit 1
           fi
