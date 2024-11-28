@@ -1,0 +1,27 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+
+
+jobs:
+  validate-pr-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate PR title
+        run: |
+          echo "Validating PR Title: ${{ github.event.pull_request.title }}"
+
+          PR_TITLE="${{ github.event.pull_request.title }}"
+
+          # Regex for PR title validation to match 'type/TicketNum-task name'
+          TITLE_REGEX='^(fix|release|feat|hotfix|build|test)\/[A-Z]+-\d+-.*$'
+
+          if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
+            echo "❌ PR title does not match the expected format: 'type/TicketNum-task name'"
+            echo "Allowed types: fix, release, feat, hotfix, build, test"
+            exit 1
+          fi
+
+          echo "✅ PR title is valid."
