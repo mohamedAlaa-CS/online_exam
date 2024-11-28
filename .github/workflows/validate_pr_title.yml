@@ -3,7 +3,6 @@ name: Validate PR Title
 on:
   pull_request:
 
-
 jobs:
   validate-pr-title:
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
 
           if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
             echo "❌ PR title does not match the expected format: 'type/TicketNum-task name'"
-            echo "Allowed types: fix, release, feat, hotfix, build, test"
+            echo "Allowed types: fix, release, feat, hotfix, build, test, feature"
             exit 1
           fi
 
