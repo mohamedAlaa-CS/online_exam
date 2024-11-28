@@ -24,3 +24,4 @@ jobs:
           fi
 
           echo "✅ PR title is valid."
+         
