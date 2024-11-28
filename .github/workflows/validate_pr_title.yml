@@ -18,7 +18,7 @@ jobs:
           PR_TITLE=$(echo "$PR_TITLE" | xargs)
           echo "Normalized PR Title: '$PR_TITLE'"
 
-          # تعديل الـ regex ليتناسب مع الشكل المطلوب
+          # تعديbbل الـ regex ليتناسب مع الشكل المطلوب
           TITLE_REGEX='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-\d+-[A-Za-z0-9 ]+$'
 
           if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
@@ -28,3 +28,4 @@ jobs:
           fi
 
           echo "✅ PR title is valid."
+  
