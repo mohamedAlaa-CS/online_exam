@@ -12,17 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
       - name: Validate PR title
         run: |
           echo "Validating PR Title: ${{ github.event.pull_request.title }}"
 
-          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_title="${{ github.event.pull_request.title }}"
 
           # Define regex to validate PR title format
-          TITLE_REGEX='^(bugfix|hotfix|release|feature)/[A-Z]+-[0-9]+-.+'
+          pattern='^(fix|release|feat|hotfix|build|test|feature)\/[A-Z]+-[0-9]+-.+'
 
           # Validate PR title using regex
-          if ! [[ "$PR_TITLE" =~ $TITLE_REGEX ]]; then
+          if ! [[ "$PR_title" =~ $pattern ]]; then
             echo "❌ PR title does not match the expected format: 'type/scope-TicketNum-TaskName'"
             echo "Expected format: 'feature/ECOM-27-Initialize Project'"
             echo "Allowed types: fix, release, feat, hotfix, build, test, feature"
