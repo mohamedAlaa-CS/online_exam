@@ -27,5 +27,6 @@ class Subject {
   SubjectEntity toEntity() => SubjectEntity(
         name: name ?? '',
         image: icon ?? '',
+        id: id ?? '',
       );
 }

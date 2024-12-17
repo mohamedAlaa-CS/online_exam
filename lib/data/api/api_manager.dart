@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/cache/shared_preferences.dart';
+import 'package:online_exam/core/helper/constant.dart';
 import 'package:online_exam/data/api/model/request/change_password_request.dart';
 import 'package:online_exam/data/api/model/request/edit_profile_request.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
@@ -114,7 +116,14 @@ class ApiManager {
   }
 
   Future<SubjectDto> getAllSubject() async {
-    var response = await _dio.get(ApiConstants.getAllSubjectApi);
+    var token =
+        await SharedPreferencesHelper.getSecuredString(key: Constant.keyToken);
+    var response = await _dio.get(
+      ApiConstants.getAllSubjectApi,
+      options: Options(
+        headers: {"token": token},
+      ),
+    );
 
     return SubjectDto.fromJson(response.data);
   }

@@ -12,6 +12,9 @@ abstract class AppStrings {
   static const String confirmPassword = 'Confirm password';
   static const String success = 'Success';
   static const String continuetext = 'Continue';
+  static const String survey = 'Survey';
+  static const String search = 'Search';
+  static const String browseBySubject = 'Browse by subject';
 
   //? icons svg
   static const String svgBase = 'assets/svg/';

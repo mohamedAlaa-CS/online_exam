@@ -44,7 +44,10 @@ dependencies:
   shared_preferences: 
   flutter_secure_storage: ^9.2.2
   pinput: ^5.0.0
-  flutter_svg: 
+  flutter_svg:
+  cached_network_image: 
+  animate_do: 
+  skeletonizer: ^1.4.2
 
 dev_dependencies:
   flutter_test:
