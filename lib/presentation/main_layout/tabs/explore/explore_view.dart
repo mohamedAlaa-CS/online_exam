@@ -24,7 +24,7 @@ class _ExploreViewState extends State<ExploreView> {
   @override
   void initState() {
     viewModel = getIt<SubjectViewModel>();
-    viewModel.doAction(GetAllSubjects());
+    viewModel.doAction(GetAllSubjectsAction());
     super.initState();
   }
 
@@ -46,7 +46,10 @@ class _ExploreViewState extends State<ExploreView> {
                         .copyWith(color: AppColors.primary),
                   ),
                   verticalSpace(16),
-                  const AppTextFormField(
+                  AppTextFormField(
+                    onChange: (value) {
+                      viewModel.doAction(SerchSubjectsAction(value));
+                    },
                     prefixIcon: Icons.search,
                     labelText: AppStrings.search,
                     borderRadius: 20,
@@ -56,7 +59,7 @@ class _ExploreViewState extends State<ExploreView> {
                     AppStrings.browseBySubject,
                     style: TextStyles.font18Black500Weight,
                   ),
-                  SubjectListView(),
+                   SubjectListView(),
                 ],
               );
             },

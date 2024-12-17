@@ -1,3 +1,9 @@
 sealed class SubjectAction {}
 
-class GetAllSubjects extends SubjectAction {}
+class GetAllSubjectsAction extends SubjectAction {}
+
+class SerchSubjectsAction extends SubjectAction {
+  final String searchText;
+
+  SerchSubjectsAction(this.searchText);
+}

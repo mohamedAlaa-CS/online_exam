@@ -15,3 +15,8 @@ class GetAllSubjectError extends SubjectStates {
   final String message;
   GetAllSubjectError(this.message);
 }
+
+class SearchSubjectSuccess extends SubjectStates {
+  final List<SubjectEntity> subjectList;
+  SearchSubjectSuccess(this.subjectList);
+}

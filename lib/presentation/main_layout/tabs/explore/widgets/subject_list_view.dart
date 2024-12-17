@@ -12,23 +12,23 @@ import 'package:skeletonizer/skeletonizer.dart';
 // ignore: must_be_immutable
 class SubjectListView extends StatelessWidget {
   SubjectListView({super.key});
-  List<SubjectEntity>? subjectsList;
-
+  List<SubjectEntity>? dispalySubjectList;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SubjectViewModel, SubjectStates>(
       builder: (context, state) {
+        var viewModel = context.read<SubjectViewModel>();
+        var subjectsList = viewModel.searhcSubjectList;
         if (state is GetAllSubjectError) {
           return Center(child: Text(state.message));
         }
-        if (state is GetAllSubjectSuccess) {
-          subjectsList = state.subjectList;
-        }
+
         return Expanded(
           child: RefreshIndicator(
             color: AppColors.primary,
             onRefresh: () async {
-              context.read<SubjectViewModel>().doAction(GetAllSubjects());
+              viewModel.searhcSubjectList = null;
+              viewModel.doAction(GetAllSubjectsAction());
             },
             child: ListView.builder(
               itemCount: subjectsList?.length ?? 6,

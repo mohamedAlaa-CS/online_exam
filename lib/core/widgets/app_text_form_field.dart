@@ -19,6 +19,7 @@ class AppTextFormField extends StatelessWidget {
     this.initialValue,
     this.borderRadius,
     this.prefixIcon,
+    this.onChange,
   });
   final String labelText;
   final String? hintText;
@@ -33,12 +34,14 @@ class AppTextFormField extends StatelessWidget {
   final String? initialValue;
   final double? borderRadius;
   final IconData? prefixIcon;
+  final void Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24.h),
       child: TextFormField(
+        onChanged: onChange,
         controller: controller,
         initialValue: initialValue,
         obscureText: isObscureText ?? false,
