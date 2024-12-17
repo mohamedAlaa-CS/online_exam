@@ -4,19 +4,23 @@ import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
 class AppTextFormField extends StatelessWidget {
-  const AppTextFormField(
-      {super.key,
-      required this.labelText,
-      this.hintText,
-      this.controller,
-      this.validator,
-      this.isObscureText,
-      this.suffixIcon,
-      this.isReadOnly = false,
-      this.focusNode,
-      this.suffixWidget,
-      this.hintStyle,
-      this.initialValue});
+  const AppTextFormField({
+    super.key,
+    required this.labelText,
+    this.hintText,
+    this.controller,
+    this.validator,
+    this.isObscureText,
+    this.suffixIcon,
+    this.isReadOnly = false,
+    this.focusNode,
+    this.suffixWidget,
+    this.hintStyle,
+    this.initialValue,
+    this.borderRadius,
+    this.prefixIcon,
+    this.onChange,
+  });
   final String labelText;
   final String? hintText;
   final TextEditingController? controller;
@@ -28,12 +32,16 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixWidget;
   final TextStyle? hintStyle;
   final String? initialValue;
+  final double? borderRadius;
+  final IconData? prefixIcon;
+  final void Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 24.h),
       child: TextFormField(
+        onChanged: onChange,
         controller: controller,
         initialValue: initialValue,
         obscureText: isObscureText ?? false,
@@ -48,31 +56,32 @@ class AppTextFormField extends StatelessWidget {
           hintStyle: hintStyle ?? TextStyles.font14PlaceHolder400Weight,
           labelStyle: TextStyles.font14PlaceHolder400Weight,
           suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
           suffix: suffixWidget,
 
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 4.r),
             borderSide: const BorderSide(
               color: AppColors.grey,
               width: 1.3,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 4.r),
             borderSide: const BorderSide(
               color: AppColors.grey,
               width: 1.3,
             ),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 4.r),
             borderSide: const BorderSide(
               color: AppColors.error,
               width: 1.3,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 4.r),
             borderSide: const BorderSide(
               color: AppColors.error,
               width: 1.3,
@@ -80,14 +89,14 @@ class AppTextFormField extends StatelessWidget {
           ),
 
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 4.r),
             borderSide: const BorderSide(
               color: AppColors.grey,
               width: 1.3,
             ),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 4.r),
             borderSide: const BorderSide(
               color: AppColors.grey,
               width: 1.3,

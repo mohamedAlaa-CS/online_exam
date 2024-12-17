@@ -8,4 +8,5 @@ class ApiConstants {
   static const String getUserInfoApi = "auth/profileData";
   static const String editUserInfoApi = "auth/editProfile";
   static const String changePasswordApi = "auth/changePassword";
+  static const String getAllSubjectApi = "subjects";
 }

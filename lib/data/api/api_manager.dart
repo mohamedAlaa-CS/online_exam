@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/cache/shared_preferences.dart';
+import 'package:online_exam/core/helper/constant.dart';
 import 'package:online_exam/data/api/model/request/change_password_request.dart';
 import 'package:online_exam/data/api/model/request/edit_profile_request.dart';
 import 'package:online_exam/data/api/model/request/forget_password_request.dart';
@@ -9,6 +11,7 @@ import 'package:online_exam/data/api/model/request/signup_request_body.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/auth_response/auth_response.dart';
 import 'package:online_exam/data/api/model/response/change_password_response.dart';
+import 'package:online_exam/data/api/model/response/explor/subject/subject_dto/subject_dto.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/data/api/model/response/get_user_info_response/get_user_info_response.dart';
 import 'package:online_exam/data/api/model/response/reset_password_response.dart';
@@ -110,5 +113,18 @@ class ApiManager {
     );
     var changePasswordResponse = ChangePasswordResponse.fromJson(response.data);
     return changePasswordResponse.toEtity();
+  }
+
+  Future<SubjectDto> getAllSubject() async {
+    var token =
+        await SharedPreferencesHelper.getSecuredString(key: Constant.keyToken);
+    var response = await _dio.get(
+      ApiConstants.getAllSubjectApi,
+      options: Options(
+        headers: {"token": token},
+      ),
+    );
+
+    return SubjectDto.fromJson(response.data);
   }
 }
