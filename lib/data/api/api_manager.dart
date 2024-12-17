@@ -11,6 +11,7 @@ import 'package:online_exam/data/api/model/request/signup_request_body.dart';
 import 'package:online_exam/data/api/model/request/verifiay_reset_code_request.dart';
 import 'package:online_exam/data/api/model/response/auth_response/auth_response.dart';
 import 'package:online_exam/data/api/model/response/change_password_response.dart';
+import 'package:online_exam/data/api/model/response/exam/exam_dto/exam_dto.dart';
 import 'package:online_exam/data/api/model/response/explor/subject/subject_dto/subject_dto.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/data/api/model/response/get_user_info_response/get_user_info_response.dart';
@@ -126,5 +127,20 @@ class ApiManager {
     );
 
     return SubjectDto.fromJson(response.data);
+  }
+
+  Future<ExamDto> getExamOfSubject(String subjectId) async {
+    var token =
+        await SharedPreferencesHelper.getSecuredString(key: Constant.keyToken);
+    var response = await _dio.get(
+      ApiConstants.getExamOfSubjectApi,
+      options: Options(
+        headers: {"token": token},
+      ),
+      queryParameters: {
+        "subject": subjectId,
+      },
+    );
+    return ExamDto.fromJson(response.data);
   }
 }

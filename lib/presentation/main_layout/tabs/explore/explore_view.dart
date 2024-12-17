@@ -59,7 +59,7 @@ class _ExploreViewState extends State<ExploreView> {
                     AppStrings.browseBySubject,
                     style: TextStyles.font18Black500Weight,
                   ),
-                   SubjectListView(),
+                  SubjectListView(),
                 ],
               );
             },

@@ -1,4 +1,4 @@
-import 'metadata.dart';
+import '../../../../metadata.dart';
 import 'subject.dart';
 
 class SubjectDto {
