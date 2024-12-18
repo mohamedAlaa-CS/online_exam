@@ -7,3 +7,9 @@ class SerchSubjectsAction extends SubjectAction {
 
   SerchSubjectsAction(this.searchText);
 }
+
+class NavToExamViewAction extends SubjectAction {
+  final String subjectId;
+
+  NavToExamViewAction(this.subjectId);
+}

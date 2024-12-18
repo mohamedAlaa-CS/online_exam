@@ -20,3 +20,8 @@ class SearchSubjectSuccess extends SubjectStates {
   final List<SubjectEntity> subjectList;
   SearchSubjectSuccess(this.subjectList);
 }
+
+class NavToExamViewState extends SubjectStates {
+  final String subjectId;
+  NavToExamViewState(this.subjectId);
+}

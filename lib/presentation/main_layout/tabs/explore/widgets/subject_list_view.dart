@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/domin/entities/explor_entity/subject_entity.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/view_models/subject_contract.dart';
@@ -15,7 +17,12 @@ class SubjectListView extends StatelessWidget {
   List<SubjectEntity>? dispalySubjectList;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SubjectViewModel, SubjectStates>(
+    return BlocConsumer<SubjectViewModel, SubjectStates>(
+      listener: (context, state) {
+        if (state is NavToExamViewState) {
+          context.pushName(Routers.examView);
+        }
+      },
       builder: (context, state) {
         var viewModel = context.read<SubjectViewModel>();
         var subjectsList = viewModel.searhcSubjectList;
@@ -38,15 +45,23 @@ class SubjectListView extends StatelessWidget {
                 animate: true,
                 child: Skeletonizer(
                   enabled: subjectsList?.isEmpty ?? true,
-                  child: SubjectItemWidget(
-                    subject: subjectsList?.isEmpty ?? true
-                        ? SubjectEntity(
-                            id: 'index',
-                            name: 'HTML',
-                            image:
-                                'https://themeisle.com/blog/wp-content/uploads/2024/06/Online-Image-Optimizer-Test-Image-JPG-Version.jpeg',
-                          )
-                        : subjectsList![index],
+                  child: InkWell(
+                    onTap: () {
+                      if (subjectsList != null) {
+                        viewModel.doAction(
+                            NavToExamViewAction(subjectsList[index].id));
+                      }
+                    },
+                    child: SubjectItemWidget(
+                      subject: subjectsList?.isEmpty ?? true
+                          ? SubjectEntity(
+                              id: 'index',
+                              name: 'HTML',
+                              image:
+                                  'https://themeisle.com/blog/wp-content/uploads/2024/06/Online-Image-Optimizer-Test-Image-JPG-Version.jpeg',
+                            )
+                          : subjectsList![index],
+                    ),
                   ),
                 ),
               ),
