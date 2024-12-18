@@ -67,6 +67,7 @@ class AppRouters {
         );
       case Routers.examView:
         return MaterialPageRoute(
+          settings: settings,
           builder: (context) => const ExamView(),
         );
 

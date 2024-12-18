@@ -28,7 +28,7 @@ class SubjectViewModel extends Cubit<SubjectStates> {
         }
       case NavToExamViewAction():
         {
-          _navToExamView(action.subjectId);
+          _navToExamView(action.subject);
         }
     }
   }
@@ -68,7 +68,7 @@ class SubjectViewModel extends Cubit<SubjectStates> {
     emit(SearchSubjectSuccess(searhcSubjectList ?? []));
   }
 
-  _navToExamView(String subjectId) {
-    emit(NavToExamViewState(subjectId));
+  _navToExamView(SubjectEntity subject) {
+    emit(NavToExamViewState(subject));
   }
 }

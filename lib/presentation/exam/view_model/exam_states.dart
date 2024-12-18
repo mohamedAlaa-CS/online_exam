@@ -17,3 +17,5 @@ class ExamErrorState extends ExamStates {
 
   ExamErrorState(this.message);
 }
+
+class ExamEmptyState extends ExamStates {}

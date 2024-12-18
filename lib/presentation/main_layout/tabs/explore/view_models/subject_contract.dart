@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/explor_entity/subject_entity.dart';
+
 sealed class SubjectAction {}
 
 class GetAllSubjectsAction extends SubjectAction {}
@@ -9,7 +11,7 @@ class SerchSubjectsAction extends SubjectAction {
 }
 
 class NavToExamViewAction extends SubjectAction {
-  final String subjectId;
+  final SubjectEntity subject;
 
-  NavToExamViewAction(this.subjectId);
+  NavToExamViewAction(this.subject);
 }

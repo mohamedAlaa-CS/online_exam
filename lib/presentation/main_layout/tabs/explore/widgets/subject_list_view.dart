@@ -20,7 +20,7 @@ class SubjectListView extends StatelessWidget {
     return BlocConsumer<SubjectViewModel, SubjectStates>(
       listener: (context, state) {
         if (state is NavToExamViewState) {
-          context.pushName(Routers.examView);
+          context.pushName(Routers.examView, arguments: state.subject);
         }
       },
       builder: (context, state) {
@@ -48,8 +48,8 @@ class SubjectListView extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       if (subjectsList != null) {
-                        viewModel.doAction(
-                            NavToExamViewAction(subjectsList[index].id));
+                        viewModel
+                            .doAction(NavToExamViewAction(subjectsList[index]));
                       }
                     },
                     child: SubjectItemWidget(

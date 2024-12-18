@@ -22,6 +22,6 @@ class SearchSubjectSuccess extends SubjectStates {
 }
 
 class NavToExamViewState extends SubjectStates {
-  final String subjectId;
-  NavToExamViewState(this.subjectId);
+  final SubjectEntity subject;
+  NavToExamViewState(this.subject);
 }

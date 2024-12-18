@@ -16,19 +16,23 @@ class ExamViewModel extends Cubit<ExamStates> {
     switch (action) {
       case LoadExamsAction():
         {
-          await _loadExamOfSUbject(action.subjectId);
+          await _loadExamOfSubject(action.subjectId);
         }
     }
   }
 
-  Future<void> _loadExamOfSUbject(String subjectId) async {
+  Future<void> _loadExamOfSubject(String subjectId) async {
     emit(ExamLoadingState());
     var response = await _examUseCase.call(subjectId: subjectId);
 
     switch (response) {
       case Success<List<ExamEntity>>():
         {
-          emit(ExamSuccessState(response.data));
+          if (response.data.isEmpty) {
+            emit(ExamEmptyState());
+          } else {
+            emit(ExamSuccessState(response.data));
+          }
         }
       case Fail<List<ExamEntity>>():
         {
