@@ -7,4 +7,5 @@ class Routers {
   static const String homeView = '/home';
   static const String editProfile = '/edit_profile_view';
   static const String changePassword = '/change_password_view';
+  static const String examView = '/exam_view';
 }

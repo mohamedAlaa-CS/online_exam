@@ -6,7 +6,6 @@ import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/app_text_form_field.dart';
-import 'package:online_exam/core/widgets/title_of_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/view_models/subject_contract.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/view_models/subject_states.dart';
 import 'package:online_exam/presentation/main_layout/tabs/explore/view_models/subject_view_model.dart';
@@ -40,11 +39,9 @@ class _ExploreViewState extends State<ExploreView> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TitleOfView(
-                    title: AppStrings.survey,
-                    style: TextStyles.font20Black500Weight
-                        .copyWith(color: AppColors.primary),
-                  ),
+                  Text(AppStrings.survey,
+                      style: TextStyles.font20Black500Weight
+                          .copyWith(color: AppColors.primary)),
                   verticalSpace(16),
                   AppTextFormField(
                     onChange: (value) {
@@ -59,7 +56,7 @@ class _ExploreViewState extends State<ExploreView> {
                     AppStrings.browseBySubject,
                     style: TextStyles.font18Black500Weight,
                   ),
-                   SubjectListView(),
+                  SubjectListView(),
                 ],
               );
             },

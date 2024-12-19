@@ -12,6 +12,7 @@ import 'package:online_exam/presentation/auth/forget_password/views/verification
 import 'package:online_exam/presentation/auth/login/login_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_view.dart';
 import 'package:online_exam/presentation/auth/signup/sign_up_viewmodel.dart';
+import 'package:online_exam/presentation/exam/exam_view.dart';
 import 'package:online_exam/presentation/main_layout/main_layout_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/change_password_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/edit_profile_view.dart';
@@ -63,6 +64,11 @@ class AppRouters {
       case Routers.changePassword:
         return MaterialPageRoute(
           builder: (context) => ChangePasswordView(),
+        );
+      case Routers.examView:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => const ExamView(),
         );
 
       default:

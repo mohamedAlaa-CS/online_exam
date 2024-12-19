@@ -15,6 +15,9 @@ abstract class AppStrings {
   static const String survey = 'Survey';
   static const String search = 'Search';
   static const String browseBySubject = 'Browse by subject';
+  static const String min = 'Min';
+  static const String questions = 'Questions';
+  static const String staticTime = 'From: 1.00   To: 6.00';
 
   //? icons svg
   static const String svgBase = 'assets/svg/';
