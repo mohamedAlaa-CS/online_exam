@@ -17,6 +17,7 @@ import 'package:online_exam/presentation/exam/start_exam_view.dart';
 import 'package:online_exam/presentation/main_layout/main_layout_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/change_password_view.dart';
 import 'package:online_exam/presentation/main_layout/tabs/profile/edit_profile_view.dart';
+import 'package:online_exam/presentation/questions/questions_view.dart';
 
 class AppRouters {
   static Route? onGeneratorRoute(RouteSettings settings) {
@@ -75,6 +76,11 @@ class AppRouters {
         return MaterialPageRoute(
           settings: settings,
           builder: (context) => const StartExamView(),
+        );
+      case Routers.questionsView:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => const QuestionsView(),
         );
 
       default:
