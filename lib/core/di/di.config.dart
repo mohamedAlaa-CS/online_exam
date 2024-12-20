@@ -69,6 +69,8 @@ import '../../presentation/main_layout/tabs/profile/manager/edit_profile_view_mo
     as _i451;
 import '../../presentation/main_layout/tabs/profile/manager/get_user_info_view_model/get_user_info_view_model.dart'
     as _i646;
+import '../../presentation/questions/view_model/question_view_model.dart'
+    as _i744;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -103,6 +105,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i963.ProfileOnlineDataSourseImpl(apiManager: gh<_i442.ApiManager>()));
     gh.factory<_i902.AuthRepository>(
         () => _i372.AuthRepoImpl(gh<_i386.AuthOnlineDatasource>()));
+    gh.factory<_i744.QuestionViewModel>(
+        () => _i744.QuestionViewModel(gh<_i889.QuestionsUseCase>()));
     gh.factory<_i862.ExamRepository>(
         () => _i73.ExamRepoImpl(gh<_i491.ExamOnlineDataSource>()));
     gh.factory<_i877.VerificationCodeUseCase>(() =>

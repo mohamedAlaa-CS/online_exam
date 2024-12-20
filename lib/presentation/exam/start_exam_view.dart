@@ -59,7 +59,7 @@ class StartExamView extends StatelessWidget {
               isExpanded: true,
               onPressed: () {
                 ///--------> Navigate to Questions View <--------///
-                context.pushName(Routers.questionsView);
+                context.pushName(Routers.questionsView, arguments: exam.id);
               },
               text: AppStrings.start,
               color: AppColors.primary,
