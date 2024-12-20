@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/question/questions_entity/exam.dart';
+
 class Exam {
   String? id;
   String? title;
@@ -38,4 +40,15 @@ class Exam {
         'active': active,
         'createdAt': createdAt?.toIso8601String(),
       };
+  ExamEntity toEntity() {
+    return ExamEntity(
+      id: id,
+      title: title,
+      duration: duration,
+      subject: subject,
+      numberOfQuestions: numberOfQuestions,
+      active: active,
+      createdAt: createdAt,
+    );
+  }
 }

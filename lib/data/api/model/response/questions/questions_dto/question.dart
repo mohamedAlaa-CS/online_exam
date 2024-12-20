@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/question/questions_entity/question.dart';
+
 import 'answer.dart';
 import 'exam.dart';
 import 'subject.dart';
@@ -52,4 +54,17 @@ class Question {
         'exam': exam?.toJson(),
         'createdAt': createdAt?.toIso8601String(),
       };
+   
+   QuestionEntity toEntity() {
+     return QuestionEntity(
+       answers: answers?.map((e) => e.toEntity()).toList(),
+       type: type,
+       id: id,
+       question: question,
+       correct: correct,
+       subject: subject?.toEntity(),
+       exam: exam?.toEntity(),
+       createdAt: createdAt,
+     );
+   }
 }

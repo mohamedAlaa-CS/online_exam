@@ -1,12 +1,12 @@
-class Subject {
+class SubjectEntity {
   String? id;
   String? name;
   String? icon;
   DateTime? createdAt;
 
-  Subject({this.id, this.name, this.icon, this.createdAt});
+  SubjectEntity({this.id, this.name, this.icon, this.createdAt});
 
-  factory Subject.fromJson(Map<String, dynamic> json) => Subject(
+  factory SubjectEntity.fromJson(Map<String, dynamic> json) => SubjectEntity(
         id: json['_id'] as String?,
         name: json['name'] as String?,
         icon: json['icon'] as String?,

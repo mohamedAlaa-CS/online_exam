@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/question/questions_entity/answer.dart';
+
 class Answer {
   String? answer;
   String? key;
@@ -15,5 +17,12 @@ class Answer {
     map['answer'] = answer;
     map['key'] = key;
     return map;
+  }
+
+  AnswerEntity toEntity() {
+    return AnswerEntity(
+      answer: answer,
+      key: key,
+    );
   }
 }

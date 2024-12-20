@@ -1,4 +1,4 @@
-class Exam {
+class ExamEntity {
   String? id;
   String? title;
   int? duration;
@@ -7,7 +7,7 @@ class Exam {
   bool? active;
   DateTime? createdAt;
 
-  Exam({
+  ExamEntity({
     this.id,
     this.title,
     this.duration,

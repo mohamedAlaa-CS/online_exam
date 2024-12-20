@@ -2,17 +2,17 @@ import 'answer.dart';
 import 'exam.dart';
 import 'subject.dart';
 
-class Question {
-  List<Answer>? answers;
+class QuestionEntity {
+  List<AnswerEntity>? answers;
   String? type;
   String? id;
   String? question;
   String? correct;
-  Subject? subject;
-  Exam? exam;
+  SubjectEntity? subject;
+  ExamEntity? exam;
   DateTime? createdAt;
 
-  Question({
+  QuestionEntity({
     this.answers,
     this.type,
     this.id,

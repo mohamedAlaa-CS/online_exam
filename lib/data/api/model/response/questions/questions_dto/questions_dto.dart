@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/question/questions_entity/questions_entity.dart';
+
 import 'question.dart';
 
 class QuestionsDto {
@@ -17,4 +19,10 @@ class QuestionsDto {
         'message': message,
         'questions': questions?.map((e) => e.toJson()).toList(),
       };
+   QuestionsEntity toEntity() {
+    return QuestionsEntity(
+      message: message,
+      questions: questions?.map((e) => e.toEntity()).toList(),
+     );
+  }
 }

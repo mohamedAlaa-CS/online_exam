@@ -15,6 +15,7 @@ import 'package:online_exam/data/api/model/response/exam/exam_dto/exam_dto.dart'
 import 'package:online_exam/data/api/model/response/explor/subject/subject_dto/subject_dto.dart';
 import 'package:online_exam/data/api/model/response/forget_password_response.dart';
 import 'package:online_exam/data/api/model/response/get_user_info_response/get_user_info_response.dart';
+import 'package:online_exam/data/api/model/response/questions/questions_dto/questions_dto.dart';
 import 'package:online_exam/data/api/model/response/reset_password_response.dart';
 import 'package:online_exam/data/api/model/response/verifiay_reset_code_response.dart';
 import 'package:online_exam/domin/entities/profile_entity/get_user_info_entity/change_password_entity.dart';
@@ -142,5 +143,21 @@ class ApiManager {
       },
     );
     return ExamDto.fromJson(response.data);
+  }
+
+  Future<QuestionsDto> getQuestionsOfExam(String examId) async {
+    var token =
+        await SharedPreferencesHelper.getSecuredString(key: Constant.keyToken);
+
+    var response = await _dio.get(
+      ApiConstants.getQuestionsOfExamApi,
+      queryParameters: {
+        "exam": examId,
+      },
+      options: Options(
+        headers: {"token": token},
+      ),
+    );
+    return QuestionsDto.fromJson(response.data);
   }
 }

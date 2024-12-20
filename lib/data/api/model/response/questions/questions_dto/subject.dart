@@ -1,3 +1,5 @@
+import 'package:online_exam/domin/entities/question/questions_entity/subject.dart';
+
 class Subject {
   String? id;
   String? name;
@@ -21,4 +23,12 @@ class Subject {
         'icon': icon,
         'createdAt': createdAt?.toIso8601String(),
       };
+  SubjectEntity toEntity() {
+    return SubjectEntity(
+      id: id,
+      name: name,
+      icon: icon,
+      createdAt: createdAt,
+    );
+  }
 }
