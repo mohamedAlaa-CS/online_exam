@@ -2,7 +2,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/domin/entities/exam_entity.dart';
+import 'package:online_exam/presentation/exam/view_model/exam_contract.dart';
 import 'package:online_exam/presentation/exam/view_model/exam_states.dart';
 import 'package:online_exam/presentation/exam/view_model/exam_view_model.dart';
 import 'package:online_exam/presentation/exam/widgets/exam_item_widget.dart';
@@ -14,7 +17,12 @@ class ExamListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ExamViewModel, ExamStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        //-----> nav to start exam view
+        if (state is NavigateToStartExamState) {
+          context.pushName(Routers.startExamView, arguments: state.exam);
+        }
+      },
       buildWhen: (previous, current) =>
           current is ExamLoadingState ||
           current is ExamErrorState ||
@@ -43,16 +51,26 @@ class ExamListView extends StatelessWidget {
               animate: true,
               child: Skeletonizer(
                 enabled: exams.isEmpty,
-                child: ExamItemWidget(
-                  image: staticImage,
-                  examEntity: exams.isEmpty
-                      ? ExamEntity(
-                          id: '123',
-                          title: 'hello my project',
-                          duration: 25,
-                          numberOfQuestions: 10,
-                        )
-                      : exams[index],
+                child: InkWell(
+                  onTap: () {
+                    if (exams.isNotEmpty) {
+                      //---> nav to start exam
+                      context
+                          .read<ExamViewModel>()
+                          .doAction(NavigateToStartExamAction(exams[index]));
+                    }
+                  },
+                  child: ExamItemWidget(
+                    image: staticImage,
+                    examEntity: exams.isEmpty
+                        ? ExamEntity(
+                            id: '123',
+                            title: 'hello my project',
+                            duration: 25,
+                            numberOfQuestions: 10,
+                          )
+                        : exams[index],
+                  ),
                 ),
               ),
             ),
