@@ -18,6 +18,10 @@ class ExamViewModel extends Cubit<ExamStates> {
         {
           await _loadExamOfSubject(action.subjectId);
         }
+      case NavigateToStartExamAction():
+        {
+          _navToStartExam(action.exam);
+        }
     }
   }
 
@@ -40,5 +44,9 @@ class ExamViewModel extends Cubit<ExamStates> {
           emit(ExamErrorState(errorMessage));
         }
     }
+  }
+
+  _navToStartExam(ExamEntity exam) {
+    emit(NavigateToStartExamState(exam));
   }
 }

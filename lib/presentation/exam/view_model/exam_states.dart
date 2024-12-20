@@ -19,3 +19,9 @@ class ExamErrorState extends ExamStates {
 }
 
 class ExamEmptyState extends ExamStates {}
+
+class NavigateToStartExamState extends ExamStates {
+  final ExamEntity exam;
+
+  NavigateToStartExamState(this.exam);
+}
