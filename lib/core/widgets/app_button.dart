@@ -10,11 +10,13 @@ class AppButton extends StatelessWidget {
     this.color,
     required this.onPressed,
     this.isExpanded = false,
+    this.raduis,
   });
   final String text;
   final Color? color;
   final VoidCallback onPressed;
   final bool isExpanded;
+  final double? raduis;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class AppButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
           backgroundColor: color ?? AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100.r),
+            borderRadius: BorderRadius.circular(raduis ?? 100.r),
           ),
         ),
         child: Text(

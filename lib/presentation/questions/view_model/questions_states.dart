@@ -1,16 +1,16 @@
-import 'package:online_exam/domin/entities/question/questions_entity/questions_entity.dart';
-
 sealed class QuestionsStates {}
 
 class QuestionsInitial extends QuestionsStates {}
 
 class QuestionsLoadingState extends QuestionsStates {}
 
-class QuestionsSuccessState extends QuestionsStates {
-  final QuestionsEntity questionsEntity;
+class ExamTimeoutState extends QuestionsStates {}
 
-  QuestionsSuccessState(this.questionsEntity);
-}
+class AnswerSelectedState extends QuestionsStates {}
+class NextQuestionState extends QuestionsStates {}
+class PrevQuestionState extends QuestionsStates {}
+
+class QuestionsSuccessState extends QuestionsStates {}
 
 class QuestionsErrorState extends QuestionsStates {
   final String message;
