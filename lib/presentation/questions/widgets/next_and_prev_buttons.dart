@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/helper/app_strings.dart';
 import 'package:online_exam/core/helper/spacing.dart';
+import 'package:online_exam/core/theming/colors.dart';
+import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
 
 class NextAndPrevButtons extends StatelessWidget {
@@ -33,7 +35,11 @@ class NextAndPrevButtons extends StatelessWidget {
                 onPressed: () {
                   prevButtonOnPressed.call();
                 },
-                child: const Text(AppStrings.previous),
+                child: Text(
+                  AppStrings.previous,
+                  style: TextStyles.font16White500Weight
+                      .copyWith(color: AppColors.primary),
+                ),
               ),
             ),
           ),

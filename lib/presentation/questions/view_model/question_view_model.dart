@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,10 +59,15 @@ class QuestionViewModel extends Cubit<QuestionsStates> {
     switch (response) {
       case Success<QuestionsEntity>():
         {
-          questionData = response.data;
-          questions = questionData?.questions;
-          selectedAnswer = List.generate(questions?.length ?? 0, (index) => "");
-          emit(QuestionsSuccessState());
+          if (response.data.questions!.isEmpty) {
+            emit(EmptyQuestionState());
+          } else {
+            questionData = response.data;
+            questions = questionData?.questions;
+            selectedAnswer =
+                List.generate(questions?.length ?? 0, (index) => "");
+            emit(QuestionsSuccessState());
+          }
         }
         break;
       case Fail<QuestionsEntity>():
@@ -96,6 +102,7 @@ class QuestionViewModel extends Cubit<QuestionsStates> {
   }
 
   void _updateTimeString() {
+    log('time: $time');
     String minutes = (time ~/ 60).toString();
     String seconds = (time % 60).toString();
     if (minutes.length == 1) {

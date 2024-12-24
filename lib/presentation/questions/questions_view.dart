@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:online_exam/core/di/di.dart';
+import 'package:online_exam/core/dialogs/app_dialogs.dart';
+import 'package:online_exam/core/helper/app_strings.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/domin/entities/question/questions_entity/answer.dart';
@@ -42,8 +45,21 @@ class _QuestionsViewState extends State<QuestionsView> {
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<QuestionViewModel, QuestionsStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is ExamTimeoutState) {
+            AppDialogs.showTimeOutDialog(context);
+          }
+        },
         builder: (context, state) {
+          if (state is EmptyQuestionState) {
+            //----> empty question <--------
+            return Scaffold(
+              appBar: AppBar(title: const Text(AppStrings.exam)),
+              body: Center(
+                child: Lottie.asset('assets/lottie/not_found_data.json'),
+              ),
+            );
+          }
           return Skeletonizer(
             enabled: viewModel.questionData == null,
             child: Scaffold(
@@ -59,7 +75,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                         children: [
                           Center(
                             child: Text(
-                              'Questions ${viewModel.currentQuestion + 1} of ${viewModel.questions?.length}',
+                              '${AppStrings.questions} ${viewModel.currentQuestion + 1} of ${viewModel.questions?.length}',
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -79,15 +95,20 @@ class _QuestionsViewState extends State<QuestionsView> {
                           ),
                           const SizedBox(height: 10),
                           //--------> question <---------
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10.w),
-                            child: Text(
-                              viewModel.questionData == null
-                                  ? '***************************'
-                                  : viewModel
-                                      .questions![viewModel.currentQuestion]
-                                      .question!,
-                              style: TextStyles.font18Black500Weight,
+                          InkWell(
+                            onTap: () {
+                              AppDialogs.showTimeOutDialog(context);
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10.w),
+                              child: Text(
+                                viewModel.questionData == null
+                                    ? '***************************'
+                                    : viewModel
+                                        .questions![viewModel.currentQuestion]
+                                        .question!,
+                                style: TextStyles.font18Black500Weight,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 10),

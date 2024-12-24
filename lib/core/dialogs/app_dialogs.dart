@@ -4,6 +4,7 @@ import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
+import 'package:online_exam/core/widgets/app_button.dart';
 
 class AppDialogs {
   static void showSuccessDialog(
@@ -92,5 +93,44 @@ class AppDialogs {
         ),
       ),
     );
+  }
+
+  static showTimeOutDialog(BuildContext context) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            alignment: Alignment.center,
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/time_out_icon.png',
+                      height: 80.h,
+                      fit: BoxFit.cover,
+                    ),
+                    horizontalSpace(5),
+                    Text(
+                      'Time Out!',
+                      style: TextStyles.font20Black500Weight
+                          .copyWith(color: AppColors.error),
+                    ),
+                  ],
+                ),
+                verticalSpace(24),
+                AppButton(
+                    isExpanded: true,
+                    text: 'View score',
+                    onPressed: () {
+                      context.pop();
+                    }),
+              ],
+            ),
+          );
+        });
   }
 }
