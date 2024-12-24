@@ -49,8 +49,22 @@ class QuestionViewModel extends Cubit<QuestionsStates> {
   }
 
   List<String>? selectedAnswer;
+  late List<String?> correctAnswersList =
+      questions?.map((question) => question.correct).toList() as List<String?>;
+
   QuestionsEntity? questionData;
   List<QuestionEntity>? questions;
+  int correctAnswers = 0;
+
+  /// Returns the [number] of correct answers
+  int numberOfCorrectAnswers() {
+    for (int i = 0; i < questions!.length; i++) {
+      if (selectedAnswer![i] == correctAnswersList[i]) {
+        correctAnswers++;
+      }
+    }
+    return correctAnswers;
+  }
 
   Future<void> _loadQuestions(String examId) async {
     emit(QuestionsLoadingState());

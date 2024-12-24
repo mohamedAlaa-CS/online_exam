@@ -95,7 +95,7 @@ class AppDialogs {
     );
   }
 
-  static showTimeOutDialog(BuildContext context) {
+  static showTimeOutDialog(BuildContext context, VoidCallback onButtonClicked) {
     showDialog(
         barrierDismissible: false,
         context: context,
@@ -126,7 +126,7 @@ class AppDialogs {
                     isExpanded: true,
                     text: 'View score',
                     onPressed: () {
-                      context.pop();
+                      onButtonClicked.call();
                     }),
               ],
             ),

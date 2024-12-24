@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +7,8 @@ import 'package:lottie/lottie.dart';
 import 'package:online_exam/core/di/di.dart';
 import 'package:online_exam/core/dialogs/app_dialogs.dart';
 import 'package:online_exam/core/helper/app_strings.dart';
+import 'package:online_exam/core/helper/extensions.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/domin/entities/question/questions_entity/answer.dart';
@@ -27,10 +31,12 @@ class _QuestionsViewState extends State<QuestionsView> {
   var viewModel = getIt<QuestionViewModel>();
 
   @override
-  didChangeDependencies() async {
-    super.didChangeDependencies();
-    var examId = ModalRoute.of(context)!.settings.arguments as String;
-    await viewModel.doAction(LoadQuestions(examId));
+  initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var examId = ModalRoute.of(context)!.settings.arguments as String;
+      await viewModel.doAction(LoadQuestions(examId));
+    });
     viewModel.doAction(StartTimerAction());
   }
 
@@ -47,7 +53,10 @@ class _QuestionsViewState extends State<QuestionsView> {
       child: BlocConsumer<QuestionViewModel, QuestionsStates>(
         listener: (context, state) {
           if (state is ExamTimeoutState) {
-            AppDialogs.showTimeOutDialog(context);
+            AppDialogs.showTimeOutDialog(context, () {
+              context.pop();
+              context.pushName(Routers.scoreView);
+            });
           }
         },
         builder: (context, state) {
@@ -97,7 +106,15 @@ class _QuestionsViewState extends State<QuestionsView> {
                           //--------> question <---------
                           InkWell(
                             onTap: () {
-                              AppDialogs.showTimeOutDialog(context);
+                              AppDialogs.showTimeOutDialog(context, () {
+                                log('time out');
+                                viewModel.timer.cancel();
+                                context.pop();
+                                context.pushName(
+                                  Routers.scoreView,
+                                  arguments: viewModel.numberOfCorrectAnswers(),
+                                );
+                              });
                             },
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
