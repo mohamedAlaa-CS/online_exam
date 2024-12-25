@@ -21,6 +21,15 @@ abstract class AppStrings {
   static const String languages = 'Languages';
   static const String start = 'Start';
   static const String instructions = 'Instructions';
+  static const String exam = 'Exam';
+  static const String examScore = 'Exam score';
+  static const String yourScore = 'Your score';
+  static const String correct = 'Correct';
+  static const String incorrect = 'Incorrect';
+  static const String showResult = 'Show results';
+  static const String startAgain = 'Start again';
+  static const String next = 'Next';
+  static const String previous = 'Previous';
   static const String instructions2 =
       'Sit in a quiet, well-lit room with minimal distractions';
   static const String instructions3 =
@@ -35,4 +44,6 @@ abstract class AppStrings {
   static const String resultIcon = "${svgBase}result_ic.svg";
   //? images svg
   static const String testExamImage = "assets/svg/test_exam_image.svg";
+  //? png
+  static const String alarmImage = "assets/images/alarm_image.png";
 }

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 
-class AppButton extends StatelessWidget {
-  const AppButton({
+class AppOutlineButton extends StatelessWidget {
+  const AppOutlineButton({
     super.key,
     required this.text,
     this.color,
@@ -23,18 +23,18 @@ class AppButton extends StatelessWidget {
     return SizedBox(
       height: 48.h,
       width: isExpanded ? double.infinity : null,
-      child: ElevatedButton(
+      child: OutlinedButton(
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
+        style: OutlinedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
-          backgroundColor: color ?? AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(raduis ?? 100.r),
+            borderRadius: BorderRadius.circular(100.r),
           ),
         ),
         child: Text(
           text,
-          style: TextStyles.font16White500Weight,
+          style: TextStyles.font16White500Weight
+              .copyWith(color: AppColors.primary),
         ),
       ),
     );

@@ -16,19 +16,25 @@ import '../../data/contracts/auth/auth_online_datasource.dart' as _i386;
 import '../../data/contracts/exam/exam_online_data_source.dart' as _i491;
 import '../../data/contracts/explor/subject_online_data_source.dart' as _i782;
 import '../../data/contracts/profile/profile_online_data_sourse.dart' as _i433;
+import '../../data/contracts/questions/question_online_data_source.dart'
+    as _i902;
 import '../../data/datassource/auth/auth_online_datasource_impl.dart' as _i2;
 import '../../data/datassource/exam/exam_online_data_source_impl.dart' as _i967;
 import '../../data/datassource/explor/subject_online_data_source_imple.dart'
     as _i385;
 import '../../data/datassource/profile/profile_online_data_sourse_impl.dart'
     as _i963;
+import '../../data/datassource/questions/questions_online_data_sourse_impl.dart'
+    as _i624;
 import '../../data/repository/auth_repo_impl.dart' as _i372;
 import '../../data/repository/exam_repo_impl.dart' as _i73;
 import '../../data/repository/profile_repo_impl.dart' as _i835;
+import '../../data/repository/question_repo_impl.dart' as _i457;
 import '../../data/repository/subject_repo_impl.dart' as _i218;
 import '../../domin/repositories/auth_repository.dart' as _i902;
 import '../../domin/repositories/exam_repository.dart' as _i862;
 import '../../domin/repositories/profile_repository.dart' as _i991;
+import '../../domin/repositories/questions_reository.dart' as _i566;
 import '../../domin/repositories/subject_repository.dart' as _i721;
 import '../../domin/use_case/auth_use_case/forget_password_use_case.dart'
     as _i2;
@@ -45,6 +51,7 @@ import '../../domin/use_case/profile_use_case/change_password_use_case.dart'
     as _i120;
 import '../../domin/use_case/profile_use_case/edit_profile_use_case.dart'
     as _i987;
+import '../../domin/use_case/questions_use_case.dart' as _i889;
 import '../../presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i234;
 import '../../presentation/auth/forget_password/manager/reset_password_view_model/reset_password_view_model.dart'
@@ -62,6 +69,8 @@ import '../../presentation/main_layout/tabs/profile/manager/edit_profile_view_mo
     as _i451;
 import '../../presentation/main_layout/tabs/profile/manager/get_user_info_view_model/get_user_info_view_model.dart'
     as _i646;
+import '../../presentation/questions/view_model/question_view_model.dart'
+    as _i744;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -84,12 +93,20 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i385.SubjectOnlineDataSourceImple(gh<_i442.ApiManager>()));
     gh.factory<_i491.ExamOnlineDataSource>(
         () => _i967.ExamOnlineDataSourceImpl(gh<_i442.ApiManager>()));
+    gh.factory<_i902.QuestionOnlineDataSource>(
+        () => _i624.QuestionsOnlineDataSourseImpl(gh<_i442.ApiManager>()));
     gh.factory<_i721.SubjectRepository>(
         () => _i218.SubjectRepoImpl(gh<_i782.SubjectOnlineDataSource>()));
+    gh.factory<_i566.QuestionsRepository>(
+        () => _i457.QuestionRepoImpl(gh<_i902.QuestionOnlineDataSource>()));
+    gh.factory<_i889.QuestionsUseCase>(
+        () => _i889.QuestionsUseCase(gh<_i566.QuestionsRepository>()));
     gh.factory<_i433.ProfileOnlineDataSourse>(() =>
         _i963.ProfileOnlineDataSourseImpl(apiManager: gh<_i442.ApiManager>()));
     gh.factory<_i902.AuthRepository>(
         () => _i372.AuthRepoImpl(gh<_i386.AuthOnlineDatasource>()));
+    gh.factory<_i744.QuestionViewModel>(
+        () => _i744.QuestionViewModel(gh<_i889.QuestionsUseCase>()));
     gh.factory<_i862.ExamRepository>(
         () => _i73.ExamRepoImpl(gh<_i491.ExamOnlineDataSource>()));
     gh.factory<_i877.VerificationCodeUseCase>(() =>

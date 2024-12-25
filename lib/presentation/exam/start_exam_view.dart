@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/core/helper/app_strings.dart';
+import 'package:online_exam/core/helper/extensions.dart';
 import 'package:online_exam/core/helper/spacing.dart';
+import 'package:online_exam/core/routing/routes.dart';
 import 'package:online_exam/core/theming/colors.dart';
 import 'package:online_exam/core/theming/styles.dart';
 import 'package:online_exam/core/widgets/app_button.dart';
@@ -55,7 +57,10 @@ class StartExamView extends StatelessWidget {
             //--------> Start Button <--------///
             AppButton(
               isExpanded: true,
-              onPressed: () {},
+              onPressed: () {
+                ///--------> Navigate to Questions View <--------///
+                context.pushName(Routers.questionsView, arguments: exam.id);
+              },
               text: AppStrings.start,
               color: AppColors.primary,
             ),
