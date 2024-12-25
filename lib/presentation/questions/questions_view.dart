@@ -112,7 +112,11 @@ class _QuestionsViewState extends State<QuestionsView> {
                                 context.pop();
                                 context.pushName(
                                   Routers.scoreView,
-                                  arguments: viewModel.numberOfCorrectAnswers(),
+                                  arguments: ExamScoreData(
+                                    correctAnswerslength:
+                                        viewModel.numberOfCorrectAnswers(),
+                                    questionLength: viewModel.questions!.length,
+                                  ),
                                 );
                               });
                             },
@@ -179,4 +183,14 @@ class _QuestionsViewState extends State<QuestionsView> {
       ),
     );
   }
+}
+
+class ExamScoreData {
+  final int questionLength;
+  final int correctAnswerslength;
+
+  ExamScoreData({
+    required this.questionLength,
+    required this.correctAnswerslength,
+  });
 }

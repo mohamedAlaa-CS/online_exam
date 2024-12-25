@@ -22,6 +22,12 @@ abstract class AppStrings {
   static const String start = 'Start';
   static const String instructions = 'Instructions';
   static const String exam = 'Exam';
+  static const String examScore = 'Exam score';
+  static const String yourScore = 'Your score';
+  static const String correct = 'Correct';
+  static const String incorrect = 'Incorrect';
+  static const String showResult = 'Show results';
+  static const String startAgain = 'Start again';
   static const String next = 'Next';
   static const String previous = 'Previous';
   static const String instructions2 =

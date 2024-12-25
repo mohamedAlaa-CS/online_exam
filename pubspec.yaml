@@ -48,7 +48,8 @@ dependencies:
   cached_network_image: 
   animate_do: 
   skeletonizer: ^1.4.2
-  lottie: 
+  lottie:
+  percent_indicator: ^4.2.4 
 
 dev_dependencies:
   flutter_test:

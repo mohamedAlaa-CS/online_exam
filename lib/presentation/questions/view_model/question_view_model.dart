@@ -78,6 +78,7 @@ class QuestionViewModel extends Cubit<QuestionsStates> {
           } else {
             questionData = response.data;
             questions = questionData?.questions;
+            log('answer: $correctAnswersList');
             selectedAnswer =
                 List.generate(questions?.length ?? 0, (index) => "");
             emit(QuestionsSuccessState());
