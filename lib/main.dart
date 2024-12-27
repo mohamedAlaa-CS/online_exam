@@ -11,7 +11,7 @@ void main() async {
   await SharedPreferencesHelper.init();
   await Hive.initFlutter();
   Hive.registerAdapter(ExamEntityAdapter());
-  await Hive.openBox<ExamEntity>('exams');
+  
 
   runApp(const OnlineExam());
 }

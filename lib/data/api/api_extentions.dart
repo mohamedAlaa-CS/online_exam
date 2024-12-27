@@ -9,9 +9,9 @@ Future<Result<T>> executeApi<T>(Function() apiCall) async {
   try {
     var result = await apiCall.call();
     return Success(result);
-  } on TimeoutException catch (ex) {
+  } on TimeoutException catch (_) {
     return Fail(NoInternetError());
-  } on IOException catch (ex) {
+  } on IOException catch (_) {
     return Fail(NoInternetError());
   } on DioException catch (ex) {
     return Fail(DioHttpException(ex));

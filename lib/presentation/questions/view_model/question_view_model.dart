@@ -3,9 +3,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/data/api/handel_exception_error.dart';
 import 'package:online_exam/domin/common/api_result.dart';
+import 'package:online_exam/domin/entities/exam_entity.dart';
 import 'package:online_exam/domin/entities/question/questions_entity/question.dart';
 import 'package:online_exam/domin/entities/question/questions_entity/questions_entity.dart';
 import 'package:online_exam/domin/use_case/questions_use_case.dart';
@@ -78,10 +80,20 @@ class QuestionViewModel extends Cubit<QuestionsStates> {
           } else {
             questionData = response.data;
             questions = questionData?.questions;
-            log('answer: $correctAnswersList');
             selectedAnswer =
                 List.generate(questions?.length ?? 0, (index) => "");
             emit(QuestionsSuccessState());
+            //---------> save exam to local storage <----------
+            var exam = questions![0].exam!;
+            var box = await Hive.openBox<ExamEntity>('exams');
+            await box.add(
+              ExamEntity(
+                id: exam.id ?? '',
+                title: exam.title ?? '',
+                duration: exam.duration ?? 0,
+                numberOfQuestions: exam.numberOfQuestions ?? 0,
+              ),
+            );
           }
         }
         break;
