@@ -18,6 +18,7 @@ import '../../data/contracts/explor/subject_online_data_source.dart' as _i782;
 import '../../data/contracts/profile/profile_online_data_sourse.dart' as _i433;
 import '../../data/contracts/questions/question_online_data_source.dart'
     as _i902;
+import '../../data/contracts/result/result_offfline_data_sorce.dart' as _i98;
 import '../../data/datassource/auth/auth_online_datasource_impl.dart' as _i2;
 import '../../data/datassource/exam/exam_online_data_source_impl.dart' as _i967;
 import '../../data/datassource/explor/subject_online_data_source_imple.dart'
@@ -26,15 +27,19 @@ import '../../data/datassource/profile/profile_online_data_sourse_impl.dart'
     as _i963;
 import '../../data/datassource/questions/questions_online_data_sourse_impl.dart'
     as _i624;
+import '../../data/datassource/result/result_offline_data_source_impl.dart'
+    as _i421;
 import '../../data/repository/auth_repo_impl.dart' as _i372;
 import '../../data/repository/exam_repo_impl.dart' as _i73;
 import '../../data/repository/profile_repo_impl.dart' as _i835;
 import '../../data/repository/question_repo_impl.dart' as _i457;
+import '../../data/repository/result_repo_impl.dart' as _i175;
 import '../../data/repository/subject_repo_impl.dart' as _i218;
 import '../../domin/repositories/auth_repository.dart' as _i902;
 import '../../domin/repositories/exam_repository.dart' as _i862;
 import '../../domin/repositories/profile_repository.dart' as _i991;
 import '../../domin/repositories/questions_reository.dart' as _i566;
+import '../../domin/repositories/result_repository.dart' as _i597;
 import '../../domin/repositories/subject_repository.dart' as _i721;
 import '../../domin/use_case/auth_use_case/forget_password_use_case.dart'
     as _i2;
@@ -52,6 +57,7 @@ import '../../domin/use_case/profile_use_case/change_password_use_case.dart'
 import '../../domin/use_case/profile_use_case/edit_profile_use_case.dart'
     as _i987;
 import '../../domin/use_case/questions_use_case.dart' as _i889;
+import '../../domin/use_case/result_use_case.dart' as _i184;
 import '../../presentation/auth/forget_password/manager/forget_password_view_model/forget_password_view_model.dart'
     as _i234;
 import '../../presentation/auth/forget_password/manager/reset_password_view_model/reset_password_view_model.dart'
@@ -69,6 +75,8 @@ import '../../presentation/main_layout/tabs/profile/manager/edit_profile_view_mo
     as _i451;
 import '../../presentation/main_layout/tabs/profile/manager/get_user_info_view_model/get_user_info_view_model.dart'
     as _i646;
+import '../../presentation/main_layout/tabs/result/view_model/result_view_model.dart'
+    as _i878;
 import '../../presentation/questions/view_model/question_view_model.dart'
     as _i744;
 import '../cache/shared_preferences.dart' as _i254;
@@ -95,6 +103,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i967.ExamOnlineDataSourceImpl(gh<_i442.ApiManager>()));
     gh.factory<_i902.QuestionOnlineDataSource>(
         () => _i624.QuestionsOnlineDataSourseImpl(gh<_i442.ApiManager>()));
+    gh.factory<_i98.ResultOfflineDataSource>(
+        () => _i421.ResultOfflineDataSourceImpl());
     gh.factory<_i721.SubjectRepository>(
         () => _i218.SubjectRepoImpl(gh<_i782.SubjectOnlineDataSource>()));
     gh.factory<_i566.QuestionsRepository>(
@@ -107,6 +117,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i372.AuthRepoImpl(gh<_i386.AuthOnlineDatasource>()));
     gh.factory<_i744.QuestionViewModel>(
         () => _i744.QuestionViewModel(gh<_i889.QuestionsUseCase>()));
+    gh.factory<_i597.ResultRepository>(
+        () => _i175.ResultRepoImpl(gh<_i98.ResultOfflineDataSource>()));
     gh.factory<_i862.ExamRepository>(
         () => _i73.ExamRepoImpl(gh<_i491.ExamOnlineDataSource>()));
     gh.factory<_i877.VerificationCodeUseCase>(() =>
@@ -128,6 +140,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i490.LoginUseCase(gh<_i902.AuthRepository>()));
     gh.factory<_i2.ResetPasswordUseCase>(
         () => _i2.ResetPasswordUseCase(gh<_i902.AuthRepository>()));
+    gh.factory<_i184.ResultUseCase>(
+        () => _i184.ResultUseCase(gh<_i597.ResultRepository>()));
     gh.factory<_i241.SubjectViewModel>(
         () => _i241.SubjectViewModel(gh<_i782.GetAllSubjectUseCase>()));
     gh.factory<_i1056.SignUpViewModel>(
@@ -142,6 +156,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i987.EditProfileUseCase(gh<_i991.ProfileRepository>()));
     gh.factory<_i646.GetUserInfoViewMOdel>(
         () => _i646.GetUserInfoViewMOdel(gh<_i386.GetUserInfoUseCase>()));
+    gh.factory<_i878.ResultViewModel>(
+        () => _i878.ResultViewModel(gh<_i184.ResultUseCase>()));
     gh.factory<_i651.LoginViewModel>(
         () => _i651.LoginViewModel(gh<_i490.LoginUseCase>()));
     gh.factory<_i457.ChangePasswordViewModel>(
