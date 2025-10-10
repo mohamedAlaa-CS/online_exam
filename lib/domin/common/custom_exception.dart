@@ -9,6 +9,8 @@ class ServerError implements Exception {
 class DioHttpException implements Exception {
   DioException? exception;
   DioHttpException(this.exception);
+  @override
+  toString() => exception?.response?.data['message'];
 }
 
 class NoInternetError implements Exception {}

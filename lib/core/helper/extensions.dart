@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-/// to navigate to screen 
+/// to navigate to screen
 /// context.pushName(screenRoute)
 extension Navigation on BuildContext {
   Future<dynamic> pushName(String routeName, {Object? arguments}) {
@@ -20,4 +19,7 @@ extension Navigation on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
+  void popWithResult([bool result = true]) {
+    Navigator.of(this).pop(result);
+  }
 }
